@@ -1,0 +1,925 @@
+/* ===================================
+CLEAN FINAL style.css
+Duplicates removed - Same design kept
+PART 1 / 3
+=================================== */
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f8fafc;
+min-height:100vh;
+color:#111827;
+}
+
+a{text-decoration:none;}
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:center;}
+button{cursor:pointer;border:none;}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid #dbe2ea;
+border-radius:12px;
+font-size:15px;
+outline:none;
+}
+
+/* ===================================
+LOGIN PAGE
+=================================== */
+
+.login-wrapper{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.login-card{
+width:420px;
+background:#fff;
+padding:40px;
+border-radius:22px;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.login-card h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.sub{
+color:#64748b;
+margin-bottom:25px;
+}
+
+.error{
+background:#ef4444;
+padding:10px;
+border-radius:10px;
+margin-bottom:15px;
+color:#fff;
+}
+
+.login-card input{
+margin-bottom:14px;
+}
+
+.login-btn{
+width:100%;
+padding:14px;
+background:#2563eb;
+color:#fff;
+border-radius:12px;
+font-size:16px;
+font-weight:700;
+margin-top:8px;
+}
+
+/* ===================================
+DASHBOARD
+=================================== */
+
+.pro-nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:78px;
+padding:0 35px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#fff;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+z-index:1000;
+}
+
+.nav-left,
+.nav-right{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.nav-left a{
+padding:8px 14px;
+background:#2563eb;
+color:#fff;
+border-radius:10px;
+font-weight:600;
+font-size:14px;
+}
+
+.logout-mini{
+padding:8px 12px;
+background:#dc2626;
+color:#fff;
+border-radius:10px;
+font-weight:600;
+font-size:13px;
+}
+
+.user-pill{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.user-circle{
+width:34px;
+height:34px;
+border-radius:50%;
+background:#38bdf8;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:700;
+font-size:14px;
+}
+
+.user-name{
+font-size:14px;
+font-weight:700;
+}
+
+.user-role{
+font-size:11px;
+color:#64748b;
+}
+
+.profile-wrap{
+position:relative;
+}
+
+.profile-hover-card{
+display:none;
+position:absolute;
+top:58px;
+right:0;
+width:260px;
+background:#fff;
+padding:18px;
+border-radius:14px;
+box-shadow:0 14px 28px rgba(0,0,0,.12);
+border:1px solid #e5e7eb;
+z-index:999;
+}
+
+.profile-wrap:hover .profile-hover-card{
+display:block;
+}
+
+.hero-area{
+margin-top:170px;
+text-align:center;
+padding:0 20px;
+}
+
+.hero-area h1{
+font-size:52px;
+margin-bottom:10px;
+}
+
+.hero-area p{
+font-size:18px;
+color:#64748b;
+margin-bottom:40px;
+}
+
+.stats-grid{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:nowrap;
+max-width:1400px;
+margin:40px auto 0;
+}
+
+.stat-card{
+width:180px;
+min-width:180px;
+height:130px;
+background:#fff;
+padding:20px 10px;
+border-radius:16px;
+box-shadow:0 8px 18px rgba(0,0,0,.06);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.stat-card h3{
+font-size:26px;
+margin-bottom:8px;
+color:#0b2c74;
+}
+
+.stat-card span{
+font-size:17px;
+}
+
+/* ===================================
+CLEAN FINAL style.css
+PART 2 / 3
+Apply Leave + My Leaves
+=================================== */
+
+/* COMMON PAGE BUTTONS */
+
+.top-dashboard-btn{
+position:fixed;
+top:24px;
+left:24px;
+z-index:999;
+background:#0b2c74;
+color:#fff;
+padding:12px 22px;
+border-radius:10px;
+font-size:15px;
+font-weight:700;
+box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+.top-back-btn{
+position:fixed;
+top:24px;
+right:24px;
+z-index:999;
+background:#0b2c74;
+color:#fff;
+padding:12px 22px;
+border-radius:10px;
+font-size:15px;
+font-weight:700;
+box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+.page-title{
+width:100%;
+text-align:center;
+font-size:18px;
+font-weight:700;
+margin:20px auto 12px;
+color:#111827;
+}
+
+/* ===================================
+APPLY LEAVE
+=================================== */
+
+.apply-layout{
+display:flex;
+width:100%;
+}
+
+.leave-balance{
+position:fixed;
+top:0;
+left:0;
+width:190px;
+height:100vh;
+background:#fff;
+box-shadow:2px 0 10px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+padding-top:12px;
+}
+
+.top-dashboard{
+text-align:center;
+margin-bottom:15px;
+}
+
+.top-dashboard a{
+display:block;
+width:110px;
+margin:auto;
+padding:12px;
+background:#0b2c74;
+color:#fff;
+font-weight:700;
+border-radius:8px;
+}
+
+.leave-balance h2{
+font-size:22px;
+text-align:center;
+margin-bottom:16px;
+}
+
+.bal-card{
+margin:10px 12px;
+padding:12px;
+border:1px solid #dcdcdc;
+border-radius:12px;
+background:#fff;
+text-align:center;
+min-height:85px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.bal-card h3{
+font-size:24px;
+color:#2563eb;
+margin-bottom:6px;
+}
+
+.bal-card p{
+font-size:14px;
+font-weight:600;
+color:#475569;
+}
+
+.form-side{
+margin-left:190px;
+width:calc(100% - 190px);
+display:flex;
+justify-content:center;
+padding-top:10px;
+}
+
+.apply-box{
+width:420px;
+background:#fff;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.ok-msg{
+background:#16a34a;
+color:#fff;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+text-align:center;
+font-weight:600;
+}
+
+.btn-row{
+display:flex;
+justify-content:center;
+gap:18px;
+margin-top:22px;
+}
+
+.blue-btn,
+.cancel-btn{
+width:150px;
+height:44px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0b2c74;
+color:#fff;
+border-radius:8px;
+font-size:14px;
+font-weight:600;
+}
+
+/* ===================================
+MY LEAVES
+=================================== */
+
+.leave-page{
+width:100%;
+max-width:100%;
+padding:20px 0 25px;
+margin:0;
+box-sizing:border-box;
+}
+
+.leave-card{
+width:100%;
+padding:14px 0 20px;
+margin:0;
+background:transparent;
+box-shadow:none;
+}
+
+.inside-title{
+text-align:center;
+font-size:20px;
+font-weight:700;
+margin:0 0 10px;
+color:#111827;
+}
+
+.table-top-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 22px;
+margin-bottom:8px;
+}
+
+.showing-info{
+font-size:15px;
+font-weight:600;
+color:#334155;
+}
+
+.pagination-box{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.pagination-box a{
+background:#f1f5f9;
+padding:8px 14px;
+border-radius:8px;
+color:#111827;
+font-weight:700;
+border:1px solid #dbe2ea;
+}
+
+.pagination-box a.active-page{
+background:#0b2c74;
+color:#fff;
+}
+
+/* ===================================
+CLEAN FINAL style.css
+PART 3 / 3
+My Leaves Table + Admin + Popup
+=================================== */
+
+/* ===================================
+MY LEAVES TABLE
+=================================== */
+
+.leave-table{
+width:100%;
+border-collapse:collapse;
+table-layout:fixed;
+}
+
+.leave-table th{
+width:25%;
+background:#0b2c74;
+color:#fff;
+padding:14px 8px;
+font-size:15px;
+font-weight:700;
+}
+
+.leave-table td{
+width:25%;
+padding:14px 8px;
+font-size:15px;
+color:#111827;
+border-bottom:1px solid #eef2f7;
+vertical-align:middle;
+}
+
+.bottom-search-row{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+padding:10px 22px 0;
+}
+
+.bottom-search-row input{
+height:42px;
+padding:10px 14px;
+background:#fff;
+border:1px solid #dbe2ea;
+border-radius:10px;
+font-size:14px;
+}
+
+.badge-green,
+.badge-red,
+.badge-yellow{
+padding:6px 14px;
+border-radius:20px;
+font-size:13px;
+font-weight:700;
+color:#fff;
+}
+
+.badge-green{background:#16a34a;}
+.badge-red{background:#dc2626;}
+.badge-yellow{background:#f59e0b;}
+
+/* ===================================
+ADMIN PAGE
+=================================== */
+
+.mini-table-box{
+width:100%;
+min-height:100vh;
+padding:20px 0;
+background:#fff;
+}
+
+.admin-topbar{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+align-items:center;
+padding:18px 25px;
+margin-bottom:20px;
+border-bottom:1px solid #dbe2ea;
+}
+
+.admin-title{
+text-align:center;
+font-size:22px;
+font-weight:700;
+}
+
+.admin-right{
+display:flex;
+justify-content:flex-end;
+align-items:center;
+gap:12px;
+}
+
+.admin-profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.profile-icon{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#0b5fa5;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:700;
+}
+
+.logout-btn{
+background:#7a0000;
+color:#fff;
+padding:10px 18px;
+border-radius:10px;
+font-size:14px;
+font-weight:700;
+}
+
+.admin-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin:25px;
+}
+
+.admin-card{
+padding:20px;
+border-radius:14px;
+color:#fff;
+text-align:center;
+font-weight:700;
+}
+
+.admin-card h3{
+font-size:28px;
+margin-bottom:6px;
+}
+
+.admin-card.total{background:#2563eb;}
+.admin-card.pending{background:#f59e0b;}
+.admin-card.approved{background:#16a34a;}
+.admin-card.rejected{background:#dc2626;}
+
+.small-table{
+width:100%;
+table-layout:fixed;
+border-collapse:collapse;
+}
+
+.small-table th{
+background:#0b2c74;
+color:#fff;
+padding:12px 4px;
+}
+
+.small-table td{
+padding:12px 4px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.approve-btn,
+.reject-btn,
+.approved-done,
+.rejected-done{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:48px;
+height:30px;
+padding:0 10px;
+border-radius:6px;
+font-size:13px;
+font-weight:700;
+color:#fff;
+}
+
+.approve-btn,
+.approved-done{background:#16a34a;}
+
+.reject-btn,
+.rejected-done{background:#dc2626;}
+
+/* ===================================
+POPUP
+=================================== */
+
+.popup-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-box{
+width:320px;
+background:#fff;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.popup-box button{
+padding:10px 20px;
+background:#16a34a;
+color:#fff;
+border-radius:8px;
+}
+
+/* MY LEAVES TOP HEADER BLACK BAR */
+
+.page-title{
+position:fixed !important;
+top:0 !important;
+left:0 !important;
+width:100% !important;
+height:60px !important;
+margin:0 !important;
+padding:0 !important;
+background:#0b0f19 !important;
+color:#ffffff !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+font-size:18px !important;
+font-weight:700 !important;
+z-index:9999 !important;
+box-shadow:0 2px 8px rgba(0,0,0,.25) !important;
+}
+
+/* page content down */
+.leave-page{
+margin-top:75px !important;
+}
+
+/* buttons below black bar */
+.top-dashboard-btn{
+top:75px !important;
+left:20px !important;
+}
+
+.top-back-btn{
+top:75px !important;
+right:20px !important;
+}
+
+/* my leaves title below */
+.inside-title{
+margin-top:10px !important;
+}
+
+/* MY LEAVES PAGE ALIGN FIX
+Paste LAST line of style.css
+=================================== */
+
+/* reduce top empty space */
+.leave-page{
+margin-top:20px !important;
+padding-top:0 !important;
+}
+
+/* center title properly */
+.inside-title{
+font-size:16px !important;
+margin:0 0 12px 0 !important;
+text-align:center !important;
+}
+
+/* top bar align */
+.table-top-bar{
+display:flex !important;
+justify-content:space-between !important;
+align-items:center !important;
+padding:0 18px !important;
+margin-bottom:8px !important;
+}
+
+/* smaller back button */
+a.top-back-btn{
+position:fixed !important;
+top:14px !important;
+right:16px !important;
+min-width:78px !important;
+height:36px !important;
+padding:8px 14px !important;
+font-size:13px !important;
+border-radius:8px !important;
+}
+
+/* pagination align */
+.pagination-box{
+display:flex !important;
+align-items:center !important;
+gap:8px !important;
+}
+
+/* showing text align */
+.showing-info{
+font-size:14px !important;
+margin:0 !important;
+}
+
+/* FULL UNDERLINE BELOW TITLE
+Paste LAST line of style.css
+=================================== */
+
+
+
+/* PAGINATION LIKE IMAGE
+Paste LAST line of style.css
+=================================== */
+
+.pagination-box{
+display:flex !important;
+align-items:center !important;
+gap:6px !important;
+flex-wrap:wrap !important;
+}
+
+.pagination-box a{
+min-width:34px !important;
+height:34px !important;
+padding:0 10px !important;
+display:inline-flex !important;
+align-items:center !important;
+justify-content:center !important;
+background:#f3f4f6 !important;
+color:#111827 !important;
+border:1px solid #d1d5db !important;
+border-radius:2px !important;
+font-size:14px !important;
+font-weight:500 !important;
+box-shadow:none !important;
+}
+
+/* active page */
+.pagination-box a.active-page{
+background:#e5e7eb !important;
+border:1px solid #6b7280 !important;
+font-weight:700 !important;
+}
+
+/* hover */
+.pagination-box a:hover{
+background:#e5e7eb !important;
+}
+
+/* TURN OFF PAGE SCROLL
+Paste LAST line of style.css
+=================================== */
+
+html,
+body{
+height:100vh !important;
+overflow:hidden !important;
+margin:0 !important;
+padding:0 !important;
+}
+
+/* keep page fixed inside screen */
+.leave-page{
+height:100vh !important;
+overflow:hidden !important;
+}
+
+/* FIX SECOND PAGE HUGE TABLE SPACE
+Paste LAST line of style.css
+=================================== */
+
+/* cancel flex on table */
+.leave-table{
+display:table !important;
+width:100% !important;
+table-layout:fixed !important;
+flex:none !important;
+}
+
+/* normal rows */
+.leave-table tr{
+height:auto !important;
+}
+
+/* keep page layout */
+.leave-page{
+min-height:100vh !important;
+display:flex !important;
+flex-direction:column !important;
+}
+
+.leave-card{
+min-height:100vh !important;
+display:flex !important;
+flex-direction:column !important;
+}
+
+/* search always bottom */
+.bottom-search-row{
+margin-top:auto !important;
+padding:12px 18px !important;
+background:#fff !important;
+}
+
+/* REMOVE BG BOX FOR PREVIOUS / NEXT
+Paste LAST line of style.css
+=================================== */
+
+/* previous and next only */
+.pagination-box a:first-child,
+.pagination-box a:last-child{
+background:transparent !important;
+border:none !important;
+box-shadow:none !important;
+padding:0 8px !important;
+min-width:auto !important;
+height:auto !important;
+color:#111827 !important;
+border-radius:0 !important;
+}
+
+/* hover */
+.pagination-box a:first-child:hover,
+.pagination-box a:last-child:hover{
+background:transparent !important;
+color:#0b2c74 !important;
+}
+
+/* APPLY LEAVE PAGE FIX */
+
+.apply-layout{
+display:flex !important;
+min-height:auto !important;
+height:auto !important;
+}
+
+.leave-balance{
+position:fixed !important;
+left:0 !important;
+top:0 !important;
+height:100vh !important;
+width:190px !important;
+background:#fff !important;
+}
+
+.form-side{
+margin-left:190px !important;
+width:calc(100% - 190px) !important;
+display:flex !important;
+justify-content:center !important;
+padding-top:20px !important;
+}
+
+.apply-box{
+margin-top:20px !important;
+}
+
+.top-navbar{
+display:none !important;
+}

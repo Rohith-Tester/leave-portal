@@ -1,0 +1,495 @@
+/* register.css - cleaned & optimized */
+
+html,
+body{
+margin:0;
+padding:0;
+height:100vh;
+overflow:hidden;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+background:#eaf1ff;
+}
+
+.login-wrapper{
+width:100%;
+max-width:1340px;
+height:96vh;
+display:flex;
+overflow:hidden;
+border-radius:24px;
+margin:0 auto;
+}
+
+.left-panel{
+width:46%;
+}
+
+.right-panel{
+width:58%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:22px;
+overflow:hidden;
+}
+
+.login-card{
+width:100%;
+max-width:620px;
+padding:8px 0 5px;
+text-align:center;
+}
+
+.login-card h2{
+font-size:28px;
+margin-bottom:2px;
+}
+
+.sub{
+font-size:16px;
+margin-bottom:7px;
+}
+
+.left-panel h1{
+font-size:52px;
+}
+
+.left-panel p{
+font-size:20px;
+line-height:1.5;
+}
+
+/* Inputs */
+
+.input-box,
+.password-box,
+select.role-select{
+display:block;
+margin-bottom:6px;
+position:relative;
+}
+
+.input-box input,
+.password-box input,
+.role-select{
+width:100%;
+height:42px;
+font-size:13px;
+padding:0 12px;
+border-radius:12px;
+margin:0;
+}
+
+.input-box input::placeholder{
+font-size:16px;
+}
+
+.role-select{
+margin-top:0;
+}
+
+/* Password Eye */
+
+.password-box{
+position:relative;
+}
+
+.password-box input{
+width:100%;
+padding-right:45px;
+height:42px;
+}
+
+.password-box .eye-toggle{
+position:absolute;
+right:16px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+}
+
+.eye-toggle:hover{
+color:#0a2f8f;
+}
+
+/* Captcha */
+
+.g-recaptcha{
+transform:scale(0.80);
+transform-origin:left top;
+margin:5px 0 7px;
+}
+
+/* Button */
+
+.login-btn{
+height:42px;
+font-size:20px;
+margin-top:5px;
+margin-bottom:12px;
+}
+
+/* Bottom */
+
+.divider{
+font-size:18px;
+margin-bottom:12px;
+}
+
+.bottom-link{
+font-size:15px;
+padding:3px 0;
+}
+
+/* Error */
+
+.input-error{
+border:1px solid red;
+animation:shake 0.3s linear 2;
+}
+
+.error-msg,
+.error-text{
+display:block;
+font-size:13px;
+color:red;
+height:14px;
+line-height:14px;
+margin-top:2px;
+margin-bottom:4px;
+text-align:left;
+}
+
+#userStatus,
+#passwordStrength,
+#matchStatus{
+display:block;
+font-size:11px;
+margin-top:2px;
+text-align:left;
+min-height:12px;
+line-height:12px;
+}
+
+#matchStatus,
+#passwordStrength{
+margin-bottom:0;
+}
+
+/* Animation */
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-4px);}
+50%{transform:translateX(4px);}
+75%{transform:translateX(-4px);}
+100%{transform:translateX(0);}
+}
+
+.input-error{
+border:1px solid red !important;
+animation:shake 0.3s linear 2;
+}
+
+input.input-error,
+select.input-error,
+textarea.input-error{
+border:1px solid red !important;
+animation:shake 0.3s linear 2;
+}
+
+.email-row{
+display:flex;
+gap:10px;
+align-items:flex-start;
+width:100%;
+flex-wrap:nowrap;
+}
+
+.email-box{
+position:relative;
+width:470px;
+flex:none;
+}
+
+.email-box input{
+padding-right:110px !important;
+}
+
+.verify-link{
+position:absolute;
+right:14px;
+top:21px;
+transform:translateY(-50%);
+font-size:14px;
+font-weight:600;
+color:#9aa5c7;
+cursor:not-allowed;
+user-select:none;
+white-space:nowrap;
+}
+
+.verify-link.active{
+color:#0a2f8f;
+cursor:pointer;
+}
+
+.verify-link.active:hover{
+text-decoration:underline;
+}
+
+#otpArea{
+display:flex;
+align-items:center;
+gap:8px;
+flex:none;
+}
+
+.mini-otp-box{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.mini-otp-box input{
+width:120px;
+height:42px;
+padding:0 10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+.mini-btn{
+height:42px;
+padding:0 14px;
+border:none;
+border-radius:10px;
+background:#28a745;
+color:#fff;
+cursor:pointer;
+white-space:nowrap;
+}
+
+.mobile-row{
+display:flex;
+gap:8px;
+align-items:center;
+width:100%;
+margin-bottom:14px !important;
+flex-wrap:nowrap;
+}
+
+.mobile-box{
+position:relative;
+width:500px;
+height:42px;
+flex:none;
+}
+
+.mobile-box input{
+width:100%;
+height:42px;
+padding-left:92px !important;
+padding-right:100px !important;
+font-size:16px;
+box-sizing:border-box;
+}
+
+/* Country Code */
+.country-wrap{
+position:absolute;
+left:0;
+top:0;
+height:42px;
+width:82px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-right:1px solid #d8d8d8;
+z-index:5;
+}
+
+.country-select{
+width:72px;
+height:30px;
+border:none;
+background:transparent;
+font-size:14px;
+font-weight:500;
+outline:none;
+cursor:pointer;
+appearance:auto;
+-webkit-appearance:menulist;
+-moz-appearance:menulist;
+}
+
+/* Verify OTP Text */
+#mobileVerifyBtn{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+font-size:14px;
+font-weight:600;
+white-space:nowrap;
+}
+
+/* OTP Side */
+#mobileOtpArea{
+display:flex;
+align-items:center;
+gap:6px;
+flex:none;
+}
+
+.mini-otp-box{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.mini-otp-box input{
+width:105px;
+height:42px;
+padding:0 10px;
+font-size:14px;
+box-sizing:border-box;
+}
+
+.mini-btn{
+height:42px;
+padding:0 10px;
+font-size:14px;
+white-space:nowrap;
+}
+
+.input-box,
+.email-row,
+.mobile-row{
+margin-bottom:14px !important;
+}
+
+#passwordStrength,
+#matchStatus{
+display:block !important;
+font-size:12px;
+margin-top:4px;
+margin-bottom:2px;
+text-align:left;
+padding-left:4px;
+min-height:14px;
+line-height:14px;
+}
+
+.error-msg{
+display:block;
+margin-top:2px;
+min-height:14px;
+}
+
+.login-card{
+padding-top:4px !important;
+padding-bottom:4px !important;
+}
+
+.input-box,
+.email-row,
+.mobile-row{
+margin-bottom:8px !important;
+}
+
+.input-box small,
+.error-msg,
+#passwordStrength,
+#matchStatus,
+#userStatus{
+margin-top:2px !important;
+margin-bottom:0 !important;
+min-height:12px !important;
+line-height:12px !important;
+font-size:11px !important;
+}
+
+.password-box,
+.email-box,
+.mobile-box{
+margin-bottom:0 !important;
+}
+
+.login-btn{
+margin-top:6px !important;
+margin-bottom:8px !important;
+height:44px !important;
+}
+
+.divider{
+margin:6px 0 !important;
+}
+
+.bottom-link{
+padding:1px 0 !important;
+font-size:14px !important;
+line-height:1.2 !important;
+}
+
+.mobile-row{
+display:flex;
+gap:8px;
+align-items:flex-start;
+width:100%;
+margin-bottom:16px !important;
+flex-wrap:nowrap;
+}
+
+#otpArea,
+#mobileOtpArea{
+position:relative;
+z-index:50;
+overflow:visible;
+}
+
+.mini-otp-box{
+display:flex;
+align-items:center;
+gap:8px;
+position:relative;
+z-index:60;
+}
+
+.mini-otp-box input{
+position:relative;
+z-index:61;
+}
+
+.mini-btn{
+position:relative;
+z-index:9999;
+cursor:pointer !important;
+pointer-events:auto !important;
+}
+
+#userStatus{
+display:block;
+font-size:12px;
+margin-top:3px;
+text-align:left;
+min-height:14px;
+}
+
+#emailStatus{
+display:block;
+font-size:12px;
+margin-top:2px;
+min-height:14px;
+text-align:left;
+}
+
+#registerBtn:disabled{
+opacity:0.6;
+cursor:not-allowed;
+}

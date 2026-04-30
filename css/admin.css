@@ -1,0 +1,242 @@
+/* admin.css */
+/* EXACT FROM YOUR style.css - NOTHING MISSED FOR ADMIN SECTION */
+
+/* ===================================
+RESET
+=================================== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f8fafc;
+min-height:100vh;
+color:#111827;
+}
+
+a{text-decoration:none;}
+table{width:100%;border-collapse:collapse;}
+th,td{text-align:center;}
+button{cursor:pointer;border:none;}
+
+input,select{
+width:100%;
+padding:14px;
+border:1px solid #dbe2ea;
+border-radius:12px;
+font-size:15px;
+outline:none;
+}
+
+/* ===================================
+COMMON PAGE BUTTONS
+=================================== */
+
+.top-dashboard-btn{
+position:fixed;
+top:24px;
+left:24px;
+z-index:999;
+background:#0b2c74;
+color:#fff;
+padding:12px 22px;
+border-radius:10px;
+font-size:15px;
+font-weight:700;
+box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+.top-back-btn{
+position:fixed;
+top:24px;
+right:24px;
+z-index:999;
+background:#0b2c74;
+color:#fff;
+padding:12px 22px;
+border-radius:10px;
+font-size:15px;
+font-weight:700;
+box-shadow:0 6px 14px rgba(0,0,0,.15);
+}
+
+.page-title{
+width:100%;
+text-align:center;
+font-size:18px;
+font-weight:700;
+margin:20px auto 12px;
+color:#111827;
+}
+
+/* ===================================
+ADMIN PAGE
+=================================== */
+
+.mini-table-box{
+width:100%;
+min-height:100vh;
+padding:20px 0;
+background:#fff;
+}
+
+.admin-topbar{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+align-items:center;
+padding:18px 25px;
+margin-bottom:20px;
+border-bottom:1px solid #dbe2ea;
+}
+
+.admin-title{
+text-align:center;
+font-size:22px;
+font-weight:700;
+}
+
+.admin-right{
+display:flex;
+justify-content:flex-end;
+align-items:center;
+gap:12px;
+}
+
+.admin-profile{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.profile-icon{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#0b5fa5;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:700;
+}
+
+.logout-btn{
+background:#7a0000;
+color:#fff;
+padding:10px 18px;
+border-radius:10px;
+font-size:14px;
+font-weight:700;
+}
+
+.admin-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin:25px;
+}
+
+.admin-card{
+padding:20px;
+border-radius:14px;
+color:#fff;
+text-align:center;
+font-weight:700;
+}
+
+.admin-card h3{
+font-size:28px;
+margin-bottom:6px;
+}
+
+.admin-card.total{background:#2563eb;}
+.admin-card.pending{background:#f59e0b;}
+.admin-card.approved{background:#16a34a;}
+.admin-card.rejected{background:#dc2626;}
+
+.small-table{
+width:100%;
+table-layout:fixed;
+border-collapse:collapse;
+}
+
+.small-table th{
+background:#0b2c74;
+color:#fff;
+padding:12px 4px;
+}
+
+.small-table td{
+padding:12px 4px;
+border-bottom:1px solid #e5e7eb;
+}
+
+.approve-btn,
+.reject-btn,
+.approved-done,
+.rejected-done{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:48px;
+height:30px;
+padding:0 10px;
+border-radius:6px;
+font-size:13px;
+font-weight:700;
+color:#fff;
+}
+
+.approve-btn,
+.approved-done{background:#16a34a;}
+
+.reject-btn,
+.rejected-done{background:#dc2626;}
+
+/* ===================================
+POPUP
+=================================== */
+
+.popup-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-box{
+width:320px;
+background:#fff;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.popup-box button{
+padding:10px 20px;
+background:#16a34a;
+color:#fff;
+border-radius:8px;
+}
+
+/* ===================================
+GLOBAL LAST OVERRIDE IN YOUR style.css
+=================================== */
+
+html,
+body{
+height:100vh !important;
+overflow:hidden !important;
+margin:0 !important;
+padding:0 !important;
+}

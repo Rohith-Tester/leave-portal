@@ -1,0 +1,381 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f4f6fa;
+padding-top:78px;
+}
+
+.topbar{
+position:fixed;
+top:0;
+left:0;
+right:0;
+background:#fff;
+padding:14px 24px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+z-index:999;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:28px;
+}
+
+.profile-mini{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.nav-btn,.apply-mini{
+background:#2563eb;
+color:#fff;
+text-decoration:none;
+padding:10px 16px;
+border-radius:10px;
+font-weight:600;
+}
+
+.logout-btn{
+background:#ef4444;
+color:#fff;
+padding:10px 16px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+}
+
+.avatar{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#38bdf8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+}
+
+.user-meta span{
+font-size:12px;
+color:#666;
+}
+
+.dashboard-wrap{
+width:95%;
+max-width:1650px;
+margin:auto;
+padding:25px 0;
+}
+
+h1{
+text-align:center;
+font-size:56px;
+margin-bottom:8px;
+}
+
+.sub-title{
+text-align:center;
+color:#64748b;
+font-size:18px;
+margin-bottom:28px;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:18px;
+margin-bottom:24px;
+}
+
+.card{
+background:#fff;
+padding:30px 20px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+.card h2{
+font-size:42px;
+margin-bottom:8px;
+}
+
+.blue h2{color:#2563eb;}
+.orange h2{color:#f59e0b;}
+.green h2{color:#16a34a;}
+.red h2{color:#dc2626;}
+.purple h2{color:#9333ea;}
+
+.bottom-grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:22px;
+align-items:start;
+}
+
+.table-box,.status-box{
+background:#fff;
+padding:24px;
+border-radius:18px;
+box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+.box-head,.table-tools{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:16px;
+}
+
+.tools-left,.tools-right{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.search-box{
+height:38px;
+padding:0 12px;
+border:1px solid #ddd;
+border-radius:10px;
+width:180px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:14px;
+border-bottom:1px solid #eee;
+text-align:left;
+}
+
+.badge{
+padding:7px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+}
+
+.green-badge{background:#dcfce7;color:#16a34a;}
+.red-badge{background:#fee2e2;color:#dc2626;}
+.yellow-badge{background:#fef3c7;color:#d97706;}
+
+.status-card{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px;
+border:1px solid #eee;
+border-radius:14px;
+margin-bottom:14px;
+}
+
+.status-card p{
+font-size:13px;
+color:#64748b;
+margin-top:6px;
+}
+
+.table-foot{
+margin-top:14px;
+font-size:14px;
+color:#666;
+}
+
+.refresh-btn{
+display:block;
+margin-top:16px;
+text-align:center;
+padding:12px;
+border:2px solid #2563eb;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+color:#2563eb;
+}
+
+.profile-mini{
+position:relative;
+cursor:pointer;
+}
+
+.profile-hover{
+position:absolute;
+top:58px;
+right:0;
+background:#fff;
+padding:16px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+display:none;
+z-index:999;
+}
+
+.profile-hover p{
+font-size:14px;
+margin-bottom:8px;
+color:#333;
+}
+
+.profile-mini:hover .profile-hover{
+display:block;
+}
+
+.user-meta b{
+display:block;
+font-size:18px;
+}
+
+.user-meta{
+line-height:1.2;
+}
+
+.tools-right a,
+.tools-right span{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:34px;
+height:34px;
+padding:0 10px;
+border:1px solid #dcdcdc;
+border-radius:8px;
+background:#fff;
+text-decoration:none;
+color:#111;
+font-weight:600;
+}
+
+.tools-right{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tools-right{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.tools-right a,
+.tools-right span{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:38px;
+min-width:42px;
+padding:0 14px;
+border:1px solid #cfcfcf;
+border-radius:8px;
+background:#fff;
+text-decoration:none;
+color:#111;
+font-weight:600;
+font-size:14px;
+}
+
+.tools-right a:hover{
+background:#2563eb;
+color:#fff;
+border-color:#2563eb;
+}
+
+.tools-right{
+display:flex !important;
+align-items:center !important;
+gap:10px !important;
+flex-wrap:wrap !important;
+}
+
+.page-link{
+display:inline-flex !important;
+align-items:center !important;
+justify-content:center !important;
+text-decoration:none !important;
+color:#111 !important;
+font-size:14px !important;
+padding:6px 8px !important;
+min-height:38px !important;
+}
+
+.page-box{
+width:38px !important;
+height:38px !important;
+display:inline-flex !important;
+align-items:center !important;
+justify-content:center !important;
+border:1px solid #444 !important;
+border-radius:3px !important;
+background:#fff !important;
+font-weight:700 !important;
+color:#111 !important;
+}
+
+.page-link:hover{
+color:#2563eb !important;
+}
+
+.tools-right span.page-link{
+opacity:.7 !important;
+cursor:default !important;
+}
+
+.tools-right{
+display:flex !important;
+align-items:center !important;
+gap:6px !important;
+flex-wrap:wrap !important;
+}
+
+.page-link{
+display:inline-flex !important;
+align-items:center !important;
+justify-content:center !important;
+text-decoration:none !important;
+color:#111 !important;
+font-size:12px !important;
+padding:4px 7px !important;
+min-height:30px !important;
+line-height:1 !important;
+background:transparent !important;
+border:none !important;
+}
+
+.page-box{
+width:30px !important;
+height:30px !important;
+display:inline-flex !important;
+align-items:center !important;
+justify-content:center !important;
+border:1px solid #444 !important;
+border-radius:3px !important;
+background:#fff !important;
+font-size:12px !important;
+font-weight:700 !important;
+color:#111 !important;
+}
+
+.page-link:hover{
+color:#2563eb !important;
+background:transparent !important;
+border:none !important;
+}
+
+.tools-right span.page-link{
+opacity:.75 !important;
+cursor:default !important;
+}
