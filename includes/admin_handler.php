@@ -2,7 +2,8 @@
 session_start();
 include 'db.php';
 
-$limit = 5; // how many rows per page
+/* 🔥 PAGINATION SETTINGS */
+$limit = 9; // rows per page
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if($page < 1) $page = 1;
@@ -11,12 +12,15 @@ $start = ($page - 1) * $limit;
 
 $msg = "";
 
+/* 🔥 APPROVE */
 if(isset($_GET['approve'])){
 
-$id = $_GET['approve'];
+$id = intval($_GET['approve']);
 
 $q = mysqli_query($conn,"SELECT * FROM leave_requests WHERE id='$id'");
 $data = mysqli_fetch_assoc($q);
+
+if($data){
 
 $user = $data['username'];
 $type = $data['leave_type'];
@@ -40,8 +44,11 @@ mysqli_query($conn,"UPDATE users SET earned_leave = earned_leave - $days WHERE u
 }
 
 $msg="approved";
+
+}
 }
 
+/* 🔥 REJECT */
 if(isset($_GET['reject'])){
 
 $id = intval($_GET['reject']);
@@ -51,10 +58,30 @@ mysqli_query($conn,"UPDATE leave_requests SET status='Rejected' WHERE id='$id'")
 $msg="rejected";
 }
 
-$total = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests"))['total'];
-$pending = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Pending'"))['total'];
-$approved = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Approved'"))['total'];
-$rejected = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Rejected'"))['total'];
+/* 🔥 COUNTS */
+$total = mysqli_fetch_assoc(
+    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests")
+)['total'];
 
-$res = mysqli_query($conn,"SELECT * FROM leave_requests ORDER BY id DESC");
+$pending = mysqli_fetch_assoc(
+    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Pending'")
+)['total'];
+
+$approved = mysqli_fetch_assoc(
+    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Approved'")
+)['total'];
+
+$rejected = mysqli_fetch_assoc(
+    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Rejected'")
+)['total'];
+
+/* 🔥 TOTAL PAGES */
+$totalPages = ceil($total / $limit);
+
+/* 🔥 MAIN DATA QUERY WITH LIMIT */
+$res = mysqli_query($conn,"
+SELECT * FROM leave_requests
+ORDER BY id DESC
+LIMIT $start, $limit
+");
 ?>

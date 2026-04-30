@@ -5,6 +5,7 @@
 
 <div class="mini-table-box">
 
+<!-- ===== TOP BAR ===== -->
 <div class="admin-topbar">
 
 <div></div>
@@ -27,6 +28,7 @@
 </div>
 </div>
 
+<!-- ===== STATS ===== -->
 <div class="admin-stats">
 
 <div class="admin-card total">
@@ -51,22 +53,47 @@
 
 </div>
 
+<!-- ===== TOP BAR (SHOWING + PAGINATION) ===== -->
 <div class="table-top-bar">
 
-<div class="table-top-info">
-Showing 1 to <?php echo $total; ?> of <?php echo $total; ?> entries
+    <div class="showing-info">
+        Showing <?php echo $total==0 ? 0 : $start+1; ?>
+        to <?php echo min($start+$limit,$total); ?>
+        of <?php echo $total; ?> entries
+    </div>
+
+
+<div class="pagination-box">
+
+<?php if($page > 1){ ?>
+<a href="?page=<?php echo $page-1; ?>">Previous</a>
+<?php } else { ?>
+<span class="disabled-btn">Previous</span>
+<?php } ?>
+
+<?php for($i=1; $i<=$totalPages; $i++){ ?>
+<a href="?page=<?php echo $i; ?>"
+class="<?php if($page==$i) echo 'active-page'; ?>">
+<?php echo $i; ?>
+</a>
+<?php } ?>
+
+<?php if($page < $totalPages){ ?>
+<a href="?page=<?php echo $page+1; ?>">Next</a>
+<?php } else { ?>
+<span class="disabled-btn">Next</span>
+<?php } ?>
+
 </div>
 
-<div class="top-pagination">
-<a href="#">Previous</a>
-<a href="#" class="active-page">1</a>
-<a href="#">Next</a>
 </div>
 
-</div>
+<!-- ===== TABLE WRAPPER (IMPORTANT) ===== -->
+<div class="table-wrapper">
 
 <table class="small-table">
 
+<thead>
 <tr>
 <th>User</th>
 <th>Type</th>
@@ -75,11 +102,15 @@ Showing 1 to <?php echo $total; ?> of <?php echo $total; ?> entries
 <th>Status</th>
 <th>Action</th>
 </tr>
+</thead>
+
+<tbody>
+
+<?php if(mysqli_num_rows($res) > 0){ ?>
 
 <?php while($row=mysqli_fetch_assoc($res)){ ?>
 
 <tr>
-
 <td><?php echo $row['username']; ?></td>
 <td><?php echo $row['leave_type']; ?></td>
 <td><?php echo $row['from_date']; ?></td>
@@ -87,42 +118,50 @@ Showing 1 to <?php echo $total; ?> of <?php echo $total; ?> entries
 <td><?php echo $row['status']; ?></td>
 
 <td>
-
 <?php if($row['status']=="Pending"){ ?>
-
 <a href="admin.php?approve=<?php echo $row['id']; ?>" class="approve-btn">Approve</a>
-
 <a href="admin.php?reject=<?php echo $row['id']; ?>" class="reject-btn">Reject</a>
-
 <?php } elseif($row['status']=="Approved"){ ?>
-
 <button class="approved-done">✅</button>
+<?php } else { ?>
+<button class="rejected-done">❌</button>
+<?php } ?>
+</td>
+</tr>
+
+<?php } ?>
+
+<!-- 🔥 FILL EMPTY SPACE -->
+<tr id="tableFiller">
+<td colspan="6"></td>
+</tr>
 
 <?php } else { ?>
 
-<button class="rejected-done">❌</button>
-
-<?php } ?>
-
+<tr>
+<td colspan="6" class="no-data-cell">
+No leave records found
 </td>
-
 </tr>
 
 <?php } ?>
 
-<tfoot>
-<tr class="search-footer">
-<td><input type="text" placeholder="🔍 User"></td>
-<td><input type="text" placeholder="🔍 Type"></td>
-<td><input type="text" placeholder="🔍 From"></td>
-<td><input type="text" placeholder="🔍 To"></td>
-<td><input type="text" placeholder="🔍 Status"></td>
-<td></td>
-</tr>
-</tfoot>
+</tbody>
 
 </table>
 
+<div class="search-footer">
+    <div class="search-row">
+        <input type="text" id="searchUser" placeholder="🔍 User" onkeyup="filterTable()">
+        <input type="text" id="searchType" placeholder="🔍 Type" onkeyup="filterTable()">
+        <input type="text" id="searchFrom" placeholder="🔍 From" onkeyup="filterTable()">
+        <input type="text" id="searchTo" placeholder="🔍 To" onkeyup="filterTable()">
+        <input type="text" id="searchStatus" placeholder="🔍 Status" onkeyup="filterTable()">
+    </div>
 </div>
+
+</div> <!-- END table-wrapper -->
+
+</div> <!-- END mini-table-box -->
 
 <?php include 'includes/admin_footer.php'; ?>
