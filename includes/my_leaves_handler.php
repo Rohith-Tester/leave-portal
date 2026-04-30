@@ -9,7 +9,7 @@ exit();
 
 $user = $_SESSION['user'];
 
-$limit = 14;
+$limit = 13;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 

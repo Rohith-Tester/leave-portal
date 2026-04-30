@@ -1,28 +1,30 @@
-let emailVerified = false;
+let contactVerified = false;
 
-function checkEmailForOTP(){
+function checkContactForOTP(){
 
-let email = document.getElementById("email").value.trim();
+let value = document.getElementById("contact").value.trim();
 let error = document.getElementById("emailError");
 let status = document.getElementById("emailStatus");
 let btn = document.getElementById("verifyBtn");
 
-let gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+let emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+let mobilePattern = /^[0-9]{10}$/;
 
-emailVerified = false;
+contactVerified = false;
 checkRegisterReady();
 
 document.getElementById("otpArea").innerHTML = "";
 
-if(email==""){
+if(value==""){
 error.innerHTML="";
 status.innerHTML="";
 btn.classList.remove("active");
 return;
 }
 
-if(!gmailPattern.test(email)){
-error.innerHTML="Wrong email";
+// ❌ invalid input
+if(!emailPattern.test(value) && !mobilePattern.test(value)){
+error.innerHTML="Enter valid Email or Mobile";
 status.innerHTML="";
 btn.classList.remove("active");
 return;
@@ -30,22 +32,23 @@ return;
 
 error.innerHTML="";
 
-fetch("check_email.php",{
+// 🔍 check availability
+fetch("check_contact.php",{
 method:"POST",
 headers:{
 "Content-Type":"application/x-www-form-urlencoded"
 },
-body:"email="+encodeURIComponent(email)
+body:"contact="+encodeURIComponent(value)
 })
 .then(res=>res.text())
 .then(data=>{
 
 if(data.trim()=="exists"){
-status.innerHTML="Email already exists";
+status.innerHTML="Already exists";
 status.style.color="red";
 btn.classList.remove("active");
 }else{
-status.innerHTML="Email available";
+status.innerHTML="Available";
 status.style.color="green";
 btn.classList.add("active");
 btn.onclick = sendOTP;
@@ -55,6 +58,7 @@ btn.onclick = sendOTP;
 
 }
 
+// 🔥 OTP UI
 function sendOTP(){
 
 document.getElementById("otpArea").innerHTML = `
@@ -66,15 +70,16 @@ document.getElementById("otpArea").innerHTML = `
 
 }
 
+// 🔥 VERIFY OTP
 function verifyOtp(){
 
 let otp = document.getElementById("enteredOtp").value.trim();
 
 if(otp=="123456"){
 
-emailVerified = true;
+contactVerified = true;
 
-document.getElementById("emailStatus").innerHTML="✔ Email Verified";
+document.getElementById("emailStatus").innerHTML="✔ Verified";
 document.getElementById("emailStatus").style.color="green";
 
 checkRegisterReady();
@@ -85,11 +90,12 @@ alert("Wrong OTP");
 
 }
 
+// 🔥 ENABLE REGISTER
 function checkRegisterReady(){
 
 let btn = document.getElementById("registerBtn");
 
-if(emailVerified){
+if(contactVerified){
 btn.disabled = false;
 btn.style.opacity = "1";
 btn.style.cursor = "pointer";

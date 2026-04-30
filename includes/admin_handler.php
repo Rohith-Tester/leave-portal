@@ -2,6 +2,13 @@
 session_start();
 include 'db.php';
 
+$limit = 5; // how many rows per page
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if($page < 1) $page = 1;
+
+$start = ($page - 1) * $limit;
+
 $msg = "";
 
 if(isset($_GET['approve'])){
