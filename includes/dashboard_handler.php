@@ -21,7 +21,13 @@ $casual = $data['casual_leave'];
 $sick   = $data['sick_leave'];
 $earned = $data['earned_leave'];
 
-$totalLeaves = $casual + $sick + $earned;
+$tq = mysqli_query($conn,"
+SELECT COUNT(*) total
+FROM leave_requests
+WHERE username='$user'
+");
+
+$totalLeaves = mysqli_fetch_assoc($tq)['total'];
 
 $pq = mysqli_query($conn,"
 SELECT COUNT(*) total

@@ -29,7 +29,11 @@ $to   = $data['to_date'];
 
 $days = (strtotime($to) - strtotime($from)) / 86400 + 1;
 
-mysqli_query($conn,"UPDATE leave_requests SET status='Approved' WHERE id='$id'");
+mysqli_query($conn,"
+UPDATE leave_requests 
+SET status='Approved', notification_seen=0 
+WHERE id='$id'
+");
 
 if($type == 'Casual Leave'){
 mysqli_query($conn,"UPDATE users SET casual_leave = casual_leave - $days WHERE username='$user'");
@@ -43,7 +47,9 @@ if($type == 'Earned Leave'){
 mysqli_query($conn,"UPDATE users SET earned_leave = earned_leave - $days WHERE username='$user'");
 }
 
-$msg="approved";
+$_SESSION['msg'] = "Leave Approved Successfully";
+header("Location: admin.php");
+exit();
 
 }
 }
@@ -53,9 +59,15 @@ if(isset($_GET['reject'])){
 
 $id = intval($_GET['reject']);
 
-mysqli_query($conn,"UPDATE leave_requests SET status='Rejected' WHERE id='$id'");
+mysqli_query($conn,"
+UPDATE leave_requests 
+SET status='Rejected', notification_seen=0 
+WHERE id='$id'
+");
 
-$msg="rejected";
+$_SESSION['msg'] = "Leave Rejected Successfully";
+header("Location: admin.php");
+exit();
 }
 
 /* 🔥 COUNTS */
@@ -84,4 +96,4 @@ SELECT * FROM leave_requests
 ORDER BY id DESC
 LIMIT $start, $limit
 ");
-?>
+?>  

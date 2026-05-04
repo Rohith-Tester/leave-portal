@@ -1,212 +1,225 @@
-/* apply_leave.css FULL dependency raw */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
-
+/* ===== PAGE RESET ===== */
 body{
-background:#f8fafc;
-min-height:100vh;
-color:#111827;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f5f7fb;
 }
 
-a{text-decoration:none;}
-button{cursor:pointer;border:none;}
-
-input,select{
-width:100%;
-padding:14px;
-border:1px solid #dbe2ea;
-border-radius:12px;
-font-size:15px;
-outline:none;
-}
-
-/* common buttons */
-
-.top-dashboard-btn{
-position:fixed;
-top:24px;
-left:24px;
-z-index:999;
-background:#0b2c74;
-color:#fff;
-padding:12px 22px;
-border-radius:10px;
-font-size:15px;
-font-weight:700;
-box-shadow:0 6px 14px rgba(0,0,0,.15);
-}
-
-.top-back-btn{
-position:fixed;
-top:24px;
-right:24px;
-z-index:999;
-background:#0b2c74;
-color:#fff;
-padding:12px 22px;
-border-radius:10px;
-font-size:15px;
-font-weight:700;
-box-shadow:0 6px 14px rgba(0,0,0,.15);
-}
-
+/* ===== TITLE ===== */
 .page-title{
-width:100%;
-text-align:center;
-font-size:18px;
-font-weight:700;
-margin:20px auto 12px;
-color:#111827;
+    text-align:center;
+    font-size:20px;
+    font-weight:600;
+    margin:20px 0;
 }
 
-/* apply page */
+/* ===== BACK BUTTON ===== */
+.top-back-btn{
+    position:absolute;
+    right:20px;
+    top:20px;
+    background:#2563eb;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+}
 
+/* ===== MAIN LAYOUT ===== */
 .apply-layout{
-display:flex;
-width:100%;
+    display:flex;
+    width:100%;
 }
 
+/* ===== SIDEBAR ===== */
 .leave-balance{
-position:fixed;
-top:0;
-left:0;
-width:190px;
-height:100vh;
-background:#fff;
-box-shadow:2px 0 10px rgba(0,0,0,.08);
-display:flex;
-flex-direction:column;
-padding-top:12px;
-}
-
-.top-dashboard{
-text-align:center;
-margin-bottom:15px;
-}
-
-.top-dashboard a{
-display:block;
-width:110px;
-margin:auto;
-padding:12px;
-background:#0b2c74;
-color:#fff;
-font-weight:700;
-border-radius:8px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:220px;
+    height:100vh;
+    background:#ffffff;
+    box-shadow:2px 0 10px rgba(0,0,0,0.08);
+    padding:20px 10px;
 }
 
 .leave-balance h2{
-font-size:22px;
-text-align:center;
-margin-bottom:16px;
+    margin-bottom:15px;
 }
 
+.top-dashboard a{
+    display:block;
+    background:#2563eb;
+    color:#fff;
+    text-align:center;
+    padding:8px;
+    border-radius:8px;
+    margin-bottom:15px;
+    text-decoration:none;
+}
+
+/* ===== BALANCE CARDS ===== */
 .bal-card{
-margin:10px 12px;
-padding:12px;
-border:1px solid #dcdcdc;
-border-radius:12px;
-background:#fff;
-text-align:center;
-min-height:85px;
-display:flex;
-flex-direction:column;
-justify-content:center;
+    background:#fff;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 .bal-card h3{
-font-size:24px;
-color:#2563eb;
-margin-bottom:6px;
+    margin:0;
+    font-size:22px;
 }
 
-.bal-card p{
-font-size:14px;
-font-weight:600;
-color:#475569;
-}
-
+/* ===== RIGHT SIDE ===== */
 .form-side{
-margin-left:190px;
-width:calc(100% - 190px);
-display:flex;
-justify-content:center;
-padding-top:10px;
+    margin-left:220px;
+    width:calc(100% - 220px);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:40px 20px;
 }
 
+/* ===== FORM CARD ===== */
 .apply-box{
-width:420px;
-background:#fff;
-padding:30px;
-border-radius:18px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+    width:100%;
+    max-width:900px;
+
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-.ok-msg{
-background:#16a34a;
-color:#fff;
-padding:12px;
-border-radius:10px;
-margin-bottom:15px;
-text-align:center;
-font-weight:600;
+/* ===== HEADER ===== */
+.form-header h2{
+    margin-bottom:5px;
 }
 
+.form-header p{
+    color:#6b7280;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+/* ===== LABEL ===== */
+.apply-box label{
+    display:block;
+    margin:10px 0 5px;
+    font-weight:600;
+    font-size:13px;
+}
+
+/* ===== INPUTS ===== */
+.apply-box input,
+.apply-box select,
+.apply-box textarea{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    font-size:14px;
+}
+
+/* ===== TEXTAREA ===== */
+.apply-box textarea{
+    height:90px;
+    resize:none;
+}
+
+/* ===== DATE ROW ===== */
+.date-row{
+    display:flex;
+    gap:15px;
+}
+
+.date-row div{
+    flex:1;
+}
+
+/* ===== DAYS FIELD ===== */
+#days{
+    background:#f3f4f6;
+}
+
+/* ===== BUTTONS ===== */
 .btn-row{
-display:flex;
-justify-content:center;
-gap:18px;
-margin-top:22px;
+    display:flex;
+    gap:15px;
+    margin-top:25px;
 }
 
-.blue-btn,
+.blue-btn{
+    flex:1;
+    background:#2563eb;
+    color:#fff;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.blue-btn:hover{
+    background:#1d4ed8;
+}
+
 .cancel-btn{
-width:150px;
-height:44px;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#0b2c74;
-color:#fff;
-border-radius:8px;
-font-size:14px;
-font-weight:600;
+    flex:1;
+    background:#f3f4f6;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-/* overrides */
-
-.apply-layout{
-display:flex !important;
-min-height:auto !important;
-height:auto !important;
+.cancel-btn:hover{
+    background:#e5e7eb;
 }
 
-.leave-balance{
-position:fixed !important;
-left:0 !important;
-top:0 !important;
-height:100vh !important;
-width:190px !important;
-background:#fff !important;
+/* ===== SUCCESS MESSAGE ===== */
+.ok-msg{
+    background:#dcfce7;
+    color:#166534;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+/* ===== NOTE BOX ===== */
+.note-box{
+    width:100%;
+    max-width:900px;
+    margin-top:20px;
+
+    padding:18px;
+    border-radius:12px;
+    background:#eef2ff;
+    border-left:6px solid #2563eb;
+}
+
+.leave-balance h2{
+    text-align:center !important;
 }
 
 .form-side{
-margin-left:190px !important;
-width:calc(100% - 190px) !important;
-display:flex !important;
-justify-content:center !important;
-padding-top:20px !important;
+    margin-left:220px;
+    width:calc(100% - 220px);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center 1important;   /* center horizontally */
+    justify-content:flex-start;
+
+    padding:40px 20px;
 }
 
-.apply-box{
-margin-top:20px !important;
-}
-
-.top-navbar{
-display:none !important;
+.page-title{
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    margin:20px 0;
 }

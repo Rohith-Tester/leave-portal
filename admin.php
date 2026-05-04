@@ -53,15 +53,14 @@
 
 </div>
 
-<!-- ===== TOP BAR (SHOWING + PAGINATION) ===== -->
+<!-- ===== TOP BAR ===== -->
 <div class="table-top-bar">
 
-    <div class="showing-info">
-        Showing <?php echo $total==0 ? 0 : $start+1; ?>
-        to <?php echo min($start+$limit,$total); ?>
-        of <?php echo $total; ?> entries
-    </div>
-
+<div class="showing-info">
+Showing <?php echo $total==0 ? 0 : $start+1; ?>
+to <?php echo min($start+$limit,$total); ?>
+of <?php echo $total; ?> entries
+</div>
 
 <div class="pagination-box">
 
@@ -88,7 +87,7 @@ class="<?php if($page==$i) echo 'active-page'; ?>">
 
 </div>
 
-<!-- ===== TABLE WRAPPER (IMPORTANT) ===== -->
+<!-- ===== TABLE ===== -->
 <div class="table-wrapper">
 
 <table class="small-table">
@@ -110,7 +109,15 @@ class="<?php if($page==$i) echo 'active-page'; ?>">
 
 <?php while($row=mysqli_fetch_assoc($res)){ ?>
 
-<tr>
+<tr class="leave-row"
+data-user="<?php echo htmlspecialchars($row['username'], ENT_QUOTES); ?>"
+data-type="<?php echo htmlspecialchars($row['leave_type'], ENT_QUOTES); ?>"
+data-from="<?php echo $row['from_date']; ?>"
+data-to="<?php echo $row['to_date']; ?>"
+data-reason="<?php echo htmlspecialchars($row['reason'], ENT_QUOTES); ?>"
+data-status="<?php echo $row['status']; ?>"
+style="cursor:pointer;">
+
 <td><?php echo $row['username']; ?></td>
 <td><?php echo $row['leave_type']; ?></td>
 <td><?php echo $row['from_date']; ?></td>
@@ -127,11 +134,11 @@ class="<?php if($page==$i) echo 'active-page'; ?>">
 <button class="rejected-done">❌</button>
 <?php } ?>
 </td>
+
 </tr>
 
 <?php } ?>
 
-<!-- 🔥 FILL EMPTY SPACE -->
 <tr id="tableFiller">
 <td colspan="6"></td>
 </tr>
@@ -151,17 +158,55 @@ No leave records found
 </table>
 
 <div class="search-footer">
-    <div class="search-row">
-        <input type="text" id="searchUser" placeholder="🔍 User" onkeyup="filterTable()">
-        <input type="text" id="searchType" placeholder="🔍 Type" onkeyup="filterTable()">
-        <input type="text" id="searchFrom" placeholder="🔍 From" onkeyup="filterTable()">
-        <input type="text" id="searchTo" placeholder="🔍 To" onkeyup="filterTable()">
-        <input type="text" id="searchStatus" placeholder="🔍 Status" onkeyup="filterTable()">
-    </div>
+<div class="search-row">
+<input type="text" id="searchUser" placeholder="🔍 User" onkeyup="filterTable()">
+<input type="text" id="searchType" placeholder="🔍 Type" onkeyup="filterTable()">
+<input type="text" id="searchFrom" placeholder="🔍 From" onkeyup="filterTable()">
+<input type="text" id="searchTo" placeholder="🔍 To" onkeyup="filterTable()">
+<input type="text" id="searchStatus" placeholder="🔍 Status" onkeyup="filterTable()">
+</div>
 </div>
 
-</div> <!-- END table-wrapper -->
+</div>
 
-</div> <!-- END mini-table-box -->
+</div>
+
+<!-- 🔥 SCRIPT MUST BE AT BOTTOM -->
+<script>
+document.querySelectorAll(".leave-row").forEach(row => {
+
+row.addEventListener("click", function(e){
+
+// prevent approve/reject click
+if(e.target.closest("a,button")) return;
+
+let user = this.dataset.user;
+let type = this.dataset.type;
+let from = this.dataset.from;
+let to = this.dataset.to;
+let reason = this.dataset.reason;
+let status = this.dataset.status;
+
+let d1 = new Date(from);
+let d2 = new Date(to);
+let days = (d2 - d1)/(1000*60*60*24) + 1;
+
+Swal.fire({
+title: "Leave Details",
+html: `
+<b>User:</b> ${user}<br>
+<b>Type:</b> ${type}<br>
+<b>From:</b> ${from}<br>
+<b>To:</b> ${to}<br>
+<b>Days:</b> ${days}<br>
+<b>Status:</b> ${status}<br><br>
+<b>Reason:</b><br>${reason}
+`
+});
+
+});
+
+});
+</script>
 
 <?php include 'includes/admin_footer.php'; ?>

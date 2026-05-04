@@ -6,19 +6,17 @@
 <div class="top-navbar"></div>
 
 <div class="leave-page full-width-page">
-
 <div class="leave-card full-width-card">
 
 <h1 class="inside-title">My Leaves</h1>
 
-<!-- 🔥 BACK BUTTON (TOP RIGHT ONLY) -->
 <div class="top-action-row">
     <a href="dashboard.php" class="top-back-btn small-back-btn">
         ← Back
     </a>
 </div>
 
-<!-- 🔥 SHOWING + PAGINATION SAME ROW -->
+<!-- 🔥 TOP BAR -->
 <div class="table-top-bar">
 
     <div class="showing-info">
@@ -52,64 +50,68 @@
 
 </div>
 
-<!-- 🔥 TABLE -->
-<div class="table-responsive">
+<!-- 🔥 WRAPPER FIX -->
+<div class="table-wrapper">
 
-<table class="leave-table">
+    <div class="table-responsive">
 
-<tr>
-<th>Type</th>
-<th>From Date</th>
-<th>To Date</th>
-<th>Status</th>
-</tr>
+        <table class="leave-table">
 
-<?php if(mysqli_num_rows($res) > 0){ ?>
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Status</th>
+        </tr>
+        </thead>
 
-    <?php while($row=mysqli_fetch_assoc($res)){ ?>
-    <tr>
-        <td><?php echo $row['leave_type']; ?></td>
-        <td><?php echo $row['from_date']; ?></td>
-        <td><?php echo $row['to_date']; ?></td>
-        <td>
-            <?php if($row['status']=="Approved"){ ?>
-                <span class="badge-green">Approved</span>
-            <?php } elseif($row['status']=="Rejected"){ ?>
-                <span class="badge-red">Rejected</span>
-            <?php } else { ?>
-                <span class="badge-yellow">Pending</span>
+        <tbody>
+
+        <?php if(mysqli_num_rows($res) > 0){ ?>
+
+            <?php while($row=mysqli_fetch_assoc($res)){ ?>
+            <tr>
+                <td><?php echo $row['leave_type']; ?></td>
+                <td><?php echo $row['from_date']; ?></td>
+                <td><?php echo $row['to_date']; ?></td>
+                <td>
+                    <?php if($row['status']=="Approved"){ ?>
+                        <span class="badge-green">Approved</span>
+                    <?php } elseif($row['status']=="Rejected"){ ?>
+                        <span class="badge-red">Rejected</span>
+                    <?php } else { ?>
+                        <span class="badge-yellow">Pending</span>
+                    <?php } ?>
+                </td>
+            </tr>
             <?php } ?>
-        </td>
-    </tr>
-    <?php } ?>
 
-<?php } if(mysqli_num_rows($res) == 0) { ?>
+        <?php } else { ?>
 
-<tr>
-<td colspan="4" class="no-data-cell">
-    No leave records found
-</td>
-</tr>
+            <tr>
+                <td colspan="4" class="no-data-cell">
+                    No leave records found
+                </td>
+            </tr>
 
-<?php } ?>
+        <?php } ?>
 
-</table>
+        </tbody>
 
-</div>
+        </table>
 
-<!-- 🔥 SEARCH -->
-<div class="bottom-search-wrapper <?php if($total==0) echo 'no-data-mode'; ?>">
-
-    <div class="bottom-search-row">
-        <input type="text" placeholder="🔍 Type">
-        <input type="text" placeholder="🔍 From Date">
-        <input type="text" placeholder="🔍 To Date">
-        <input type="text" placeholder="🔍 Status">
     </div>
 
-</div>
-
-</div>
+    <!-- SEARCH ALWAYS BOTTOM -->
+    <div class="bottom-search-wrapper">
+         <div class="bottom-search-row">
+              <input type="text" id="searchType" placeholder="🔍 Type">
+              <input type="text" id="searchFrom" placeholder="🔍 From Date">
+              <input type="text" id="searchTo" placeholder="🔍 To Date">
+              <input type="text" id="searchStatus" placeholder="🔍 Status">
+         </div>
+    </div>
 
 </div>
 

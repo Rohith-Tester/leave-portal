@@ -1,3 +1,20 @@
+<?php if(isset($_SESSION['msg'])){ ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+Swal.fire({
+    title: "Success!",
+    text: "<?php echo $_SESSION['msg']; ?>",
+    icon: "success",
+    confirmButtonColor: "#2563eb"
+});
+
+});
+</script>
+
+<?php unset($_SESSION['msg']); } ?>
+
 <?php if($msg=="approved" || $msg=="rejected"){ ?>
 
 <div class="popup-bg" id="popup">

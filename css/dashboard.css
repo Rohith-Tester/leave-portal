@@ -379,3 +379,18 @@ border:none !important;
 opacity:.75 !important;
 cursor:default !important;
 }
+
+.download-btn{
+    display:inline-block;
+    background:#2563eb;   /* blue */
+    color:#fff;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    border:none;
+}
+
+.download-btn:hover{
+    background:#1d4ed8;   /* darker blue */
+}

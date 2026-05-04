@@ -194,7 +194,9 @@ class="search-box">
 
 </form>
 
-<a href="dashboard.php?download=csv" style="text-decoration:none;">⬇ Download</a>
+<a href="dashboard.php?download=csv" class="download-btn">
+    ⬇ Download
+</a>
 
 </div>
 

@@ -43,6 +43,43 @@ $f  = $_POST['from'];
 $to = $_POST['to'];
 $r  = $_POST['reason'];
 
+/* 🔥 CALCULATE DAYS */
+$d1 = new DateTime($f);
+$d2 = new DateTime($to);
+$days = $d1->diff($d2)->days + 1;
+
+/* 🔥 FETCH LATEST BALANCE AGAIN (IMPORTANT) */
+$q2 = mysqli_query($conn,"
+SELECT casual_leave, sick_leave, earned_leave
+FROM users
+WHERE username='$u'
+");
+$bal = mysqli_fetch_assoc($q2);
+
+$casual = $bal['casual_leave'];
+$sick   = $bal['sick_leave'];
+$earned = $bal['earned_leave'];
+
+/* 🔥 VALIDATION */
+if($t == "Casual Leave" && $casual < $days){
+    $_SESSION['error'] = "No Casual Leave remaining!";
+    header("Location: apply_leave.php");
+    exit();
+}
+
+if($t == "Sick Leave" && $sick < $days){
+    $_SESSION['error'] = "No Sick Leave remaining!";
+    header("Location: apply_leave.php");
+    exit();
+}
+
+if($t == "Earned Leave" && $earned < $days){
+    $_SESSION['error'] = "No Earned Leave remaining!";
+    header("Location: apply_leave.php");
+    exit();
+}
+
+/* 🔥 INSERT ONLY IF VALID */
 mysqli_query($conn,"
 INSERT INTO leave_requests
 (username,leave_type,from_date,to_date,reason)
@@ -50,7 +87,10 @@ VALUES
 ('$u','$t','$f','$to','$r')
 ");
 
-$msg = "Leave Applied Successfully";
+/* 🔥 SUCCESS */
+$_SESSION['msg'] = "Leave Applied Successfully";
+header("Location: apply_leave.php");
+exit();
 
 }
 ?>

@@ -9,76 +9,93 @@
 
 <div class="apply-layout">
 
-<div class="leave-balance">
+    <!-- LEFT SIDE -->
+    <div class="leave-balance">
 
-<div class="top-dashboard">
-<a href="dashboard.php">Dashboard</a>
-</div>
+        <h2>Leave Balance</h2>
 
-<h2>Leave Balance</h2>
+        <div class="bal-card blue">
+            <h3><?php echo $casual; ?></h3>
+            <p>Casual Leave</p>
+        </div>
 
-<div class="bal-card">
-<h3><?php echo $casual; ?></h3>
-<p>Casual Leave</p>
-</div>
+        <div class="bal-card green">
+            <h3><?php echo $sick; ?></h3>
+            <p>Sick Leave</p>
+        </div>
 
-<div class="bal-card">
-<h3><?php echo $sick; ?></h3>
-<p>Sick Leave</p>
-</div>
+        <div class="bal-card orange">
+            <h3><?php echo $earned; ?></h3>
+            <p>Earned Leave</p>
+        </div>
 
-<div class="bal-card">
-<h3><?php echo $earned; ?></h3>
-<p>Earned Leave</p>
-</div>
+        <div class="bal-card purple">
+            <h3><?php echo $total; ?></h3>
+            <p>Total Remaining</p>
+        </div>
 
-<div class="bal-card">
-<h3><?php echo $total; ?></h3>
-<p>Total Remaining</p>
-</div>
+    </div>
 
-</div>
+    <!-- RIGHT SIDE -->
+    <div class="form-side">
 
-<div class="form-side">
+        <div class="apply-box">
 
-<div class="apply-box">
+            <div class="form-header">
+                <h2>Apply Leave</h2>
+                <p>Fill the details below to apply for leave</p>
+            </div>
 
-<?php if($msg!=""){ ?>
-<div class="ok-msg"><?php echo $msg; ?></div>
-<?php } ?>
+            <form method="post">
 
-<form method="post">
+                <label>Leave Type</label>
+                <select name="type" required>
+                    <option value="">-- Select Leave Type --</option>
+                    <option>Casual Leave</option>
+                    <option>Sick Leave</option>
+                    <option>Earned Leave</option>
+                </select>
 
-<select name="type" required>
-<option value="">Select Leave Type</option>
-<option>Casual Leave</option>
-<option>Sick Leave</option>
-<option>Earned Leave</option>
-</select>
+                <div class="date-row">
+                    <div>
+                        <label>From Date</label>
+                        <input type="date" id="fromDate" name="from" required>
+                    </div>
 
-<input type="date" name="from" required>
+                    <div>
+                        <label>To Date</label>
+                        <input type="date" id="toDate" name="to" required>
+                    </div>
+                </div>
 
-<input type="date" name="to" required>
+                <label>No. of Days</label>
+                <input type="text" id="days" readonly placeholder="0 Days">
 
-<input type="text" name="reason" placeholder="Reason" required>
+                <label>Reason</label>
+                <textarea name="reason" required></textarea>
 
-<div class="btn-row">
+                <div class="btn-row">
 
-<button type="submit" name="submit" class="blue-btn">
-Submit
-</button>
+                    <!-- ✅ FIXED BUTTON -->
+             <button type="submit" name="submit" class="blue-btn">
+                        Submit
+             </button>
 
-<button type="reset" class="cancel-btn">
-Cancel
-</button>
+                    <button type="reset" class="cancel-btn">
+                        Cancel
+                    </button>
 
-</div>
+                </div>
 
-</form>
+            </form>
 
-</div>
+        </div>
 
-</div>
+        <div class="note-box">
+            <strong>Note:</strong> Your leave request will be sent to admin for approval.
+        </div>
+
+    </div>
 
 </div>
 
