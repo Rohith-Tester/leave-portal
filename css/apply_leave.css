@@ -223,3 +223,87 @@ body{
     font-weight:600;
     margin:20px 0;
 }
+
+.page-title{
+    display: block !important;
+    text-align: center !important;
+    margin: 20px auto !important;
+}
+
+.page-title{
+    text-align: center !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+.page-title{
+    margin-left:220px !important;              /* same as sidebar */
+    width:calc(100% - 220px) !important;       /* same as form-side */
+    
+    text-align:center !important;
+    font-size:24px !important;
+    font-weight:600 !important;
+
+    margin-top:20px !important;
+}
+
+.error-msg{
+    color:red !important;
+    font-size:12px !important;
+    margin-top:3px !important;
+    display:block !important;
+}
+
+.input-error{
+    border:1px solid red !important;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    50%{transform:translateX(5px);}
+    75%{transform:translateX(-5px);}
+    100%{transform:translateX(0);}
+}
+
+.shake{
+    animation:shake 0.3s;
+}
+
+.date-row{
+    display:flex;
+    gap:20px !important;   /* 🔥 increase this value */
+}
+
+.date-row{
+    display:flex !important;
+    justify-content:space-between !important;
+    gap:20px !important;   /* space between boxes */
+}
+
+.date-row div{
+    width:48% !important;  /* 🔥 IMPORTANT FIX */
+}
+
+.date-row input{
+    width:100% !important;
+}
+
+.date-row input{
+    width:100% !important;
+}
+
+.date-row{
+    display:flex !important;
+    width:100% !important;
+}
+
+/* each column */
+.date-row div{
+    flex:1 !important;
+}
+
+/* add space ONLY to first column */
+.date-row div:first-child{
+    margin-right:20px !important;   /* 🔥 THIS CREATES GAP */
+}

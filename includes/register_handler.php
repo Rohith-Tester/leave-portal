@@ -50,7 +50,7 @@ $insert = mysqli_query($conn,"
 INSERT INTO users
 (fullname,username,password,role,casual_leave,sick_leave,earned_leave,email,mobile)
 VALUES
-('$name','$username','$password','$role','0','0','0','$email','$mobile')
+('$name','$username','$password','$role','5','3','7','$email','$mobile')
 ");
 
 if($insert){

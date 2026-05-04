@@ -1,3 +1,53 @@
+<script>
+document.getElementById("leaveForm").addEventListener("submit", function(e){
+
+let valid = true;
+
+let type = document.getElementById("type");
+let from = document.getElementById("fromDate");
+let to = document.getElementById("toDate");
+let reason = document.getElementById("reason");
+
+/* CLEAR OLD */
+document.querySelectorAll(".error-msg").forEach(el => el.innerText="");
+document.querySelectorAll("input,select,textarea").forEach(el=>{
+    el.classList.remove("input-error","shake");
+});
+
+/* VALIDATION */
+
+if(type.value === ""){
+    valid = false;
+    type.classList.add("input-error","shake");
+    document.getElementById("typeError").innerText = "Please select Leave Type";
+}
+
+if(from.value === ""){
+    valid = false;
+    from.classList.add("input-error","shake");
+    document.getElementById("fromError").innerText = "Select From Date";
+}
+
+if(to.value === ""){
+    valid = false;
+    to.classList.add("input-error","shake");
+    document.getElementById("toError").innerText = "Select To Date";
+}
+
+if(reason.value.trim() === ""){
+    valid = false;
+    reason.classList.add("input-error","shake");
+    document.getElementById("reasonError").innerText = "Enter Reason";
+}
+
+/* STOP SUBMIT */
+if(!valid){
+    e.preventDefault();
+}
+
+});
+</script>
+
 <?php if(isset($_SESSION['error'])){ ?>
 <script>
 Swal.fire({

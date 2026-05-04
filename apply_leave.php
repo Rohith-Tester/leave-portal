@@ -46,48 +46,53 @@
                 <p>Fill the details below to apply for leave</p>
             </div>
 
-            <form method="post">
+            <form method="post" id="leaveForm">
 
-                <label>Leave Type</label>
-                <select name="type" required>
-                    <option value="">-- Select Leave Type --</option>
-                    <option>Casual Leave</option>
-                    <option>Sick Leave</option>
-                    <option>Earned Leave</option>
-                </select>
+<label>Leave Type</label>
+<select name="type" id="type">
+    <option value="">-- Select Leave Type --</option>
+    <option>Casual Leave</option>
+    <option>Sick Leave</option>
+    <option>Earned Leave</option>
+</select>
+<span class="error-msg" id="typeError"></span>
 
-                <div class="date-row">
-                    <div>
-                        <label>From Date</label>
-                        <input type="date" id="fromDate" name="from" required>
-                    </div>
+<div class="date-row">
 
-                    <div>
-                        <label>To Date</label>
-                        <input type="date" id="toDate" name="to" required>
-                    </div>
-                </div>
+    <div>
+        <label>From Date</label>
+        <input type="date" id="fromDate" name="from">
+        <span class="error-msg" id="fromError"></span>
+    </div>
 
-                <label>No. of Days</label>
-                <input type="text" id="days" readonly placeholder="0 Days">
+    <div>
+        <label>To Date</label>
+        <input type="date" id="toDate" name="to">
+        <span class="error-msg" id="toError"></span>
+    </div>
 
-                <label>Reason</label>
-                <textarea name="reason" required></textarea>
+</div>
 
-                <div class="btn-row">
+<label>No. of Days</label>
+<input type="text" id="days" readonly placeholder="0 Days">
 
-                    <!-- ✅ FIXED BUTTON -->
-             <button type="submit" name="submit" class="blue-btn">
-                        Submit
-             </button>
+<label>Reason</label>
+<textarea name="reason" id="reason"></textarea>
+<span class="error-msg" id="reasonError"></span>
 
-                    <button type="reset" class="cancel-btn">
-                        Cancel
-                    </button>
+<div class="btn-row">
 
-                </div>
+<button type="submit" name="submit" class="blue-btn">
+    Submit
+</button>
 
-            </form>
+<button type="reset" class="cancel-btn">
+    Cancel
+</button>
+
+</div>
+
+</form>
 
         </div>
 
