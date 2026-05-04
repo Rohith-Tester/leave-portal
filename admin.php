@@ -56,11 +56,11 @@
 <!-- ===== TOP BAR ===== -->
 <div class="table-top-bar">
 
-<div class="showing-info">
-Showing <?php echo $total==0 ? 0 : $start+1; ?>
-to <?php echo min($start+$limit,$total); ?>
-of <?php echo $total; ?> entries
-</div>
+    <div class="showing-info">
+        Showing <?php echo $total==0 ? 0 : $start+1; ?>
+        to <?php echo min($start+$limit,$total); ?>
+        of <?php echo $total; ?> entries
+    </div>
 
 <div class="pagination-box">
 
