@@ -26,11 +26,19 @@ if($response["success"]){
 
 $name     = trim($_POST['fullname']);
 $username = trim($_POST['username']);
-$email    = trim($_POST['email']);
-$mobile   = trim($_POST['mobile']);
+$contact  = trim($_POST['contact']); // 🔥 FIXED
 $password = trim($_POST['password']);
 $cpass    = trim($_POST['confirm_password']);
 $role     = trim($_POST['role']);
+
+/* 🔥 SPLIT EMAIL / MOBILE */
+if(filter_var($contact, FILTER_VALIDATE_EMAIL)){
+    $email = $contact;
+    $mobile = NULL;
+}else{
+    $email = NULL;
+    $mobile = $contact;
+}
 
 if($password != $cpass){
 
@@ -46,11 +54,14 @@ $msg = "Username already exists";
 
 }else{
 
+/* 🔥 HASH PASSWORD */
+$hashed = password_hash($password, PASSWORD_DEFAULT);
+
 $insert = mysqli_query($conn,"
 INSERT INTO users
 (fullname,username,password,role,casual_leave,sick_leave,earned_leave,email,mobile)
 VALUES
-('$name','$username','$password','$role','5','3','7','$email','$mobile')
+('$name','$username','$hashed','$role','5','3','7','$email','$mobile')
 ");
 
 if($insert){

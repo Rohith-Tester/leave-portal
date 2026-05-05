@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 
 /* 🔥 PAGINATION SETTINGS */
-$limit = 9; // rows per page
+$limit = 9;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if($page < 1) $page = 1;
@@ -70,30 +70,59 @@ header("Location: admin.php");
 exit();
 }
 
-/* 🔥 COUNTS */
+/* 🔥 COUNTS (FIXED WITH JOIN) */
+
 $total = mysqli_fetch_assoc(
-    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests")
+    mysqli_query($conn,"
+    SELECT COUNT(*) total
+    FROM leave_requests lr
+    JOIN users u ON lr.username = u.username
+    ")
 )['total'];
 
 $pending = mysqli_fetch_assoc(
-    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Pending'")
+    mysqli_query($conn,"
+    SELECT COUNT(*) total 
+    FROM leave_requests lr
+    JOIN users u ON lr.username = u.username
+    WHERE lr.status='Pending'
+    ")
 )['total'];
 
 $approved = mysqli_fetch_assoc(
-    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Approved'")
+    mysqli_query($conn,"
+    SELECT COUNT(*) total 
+    FROM leave_requests lr
+    JOIN users u ON lr.username = u.username
+    WHERE lr.status='Approved'
+    ")
 )['total'];
 
 $rejected = mysqli_fetch_assoc(
-    mysqli_query($conn,"SELECT COUNT(*) total FROM leave_requests WHERE status='Rejected'")
+    mysqli_query($conn,"
+    SELECT COUNT(*) total 
+    FROM leave_requests lr
+    JOIN users u ON lr.username = u.username
+    WHERE lr.status='Rejected'
+    ")
 )['total'];
 
 /* 🔥 TOTAL PAGES */
 $totalPages = ceil($total / $limit);
 
-/* 🔥 MAIN DATA QUERY WITH LIMIT */
+/* 🔥 MAIN DATA QUERY (FIXED) */
+
 $res = mysqli_query($conn,"
-SELECT * FROM leave_requests
-ORDER BY id DESC
+SELECT lr.*
+FROM leave_requests lr
+JOIN users u ON lr.username = u.username
+ORDER BY lr.id DESC
 LIMIT $start, $limit
 ");
-?>  
+
+/* 🔥 AUTO FIX EMPTY PAGE */
+if(mysqli_num_rows($res) == 0 && $page > 1){
+    header("Location: admin.php?page=1");
+    exit();
+}
+?>
