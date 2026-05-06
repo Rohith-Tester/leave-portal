@@ -350,3 +350,31 @@ margin-top:2px !important;
 margin-bottom:4px !important;
 }
 
+/* Role Toggle */
+
+.role-toggle{
+display:flex !important;
+gap:10px !important;
+margin-bottom:14px !important;
+}
+
+.role-btn{
+flex:1 !important;
+height:42px !important;
+border:none !important;
+border-radius:12px !important;
+background:#e5e7eb !important;
+font-size:14px !important;
+font-weight:600 !important;
+cursor:pointer !important;
+transition:0.2s !important;
+}
+
+.role-btn:hover{
+background:#dbe2ea !important;
+}
+
+.active-role{
+background:#0a2f8f !important;
+color:#fff !important;
+}

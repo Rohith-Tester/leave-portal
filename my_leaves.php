@@ -5,7 +5,7 @@
 
 <div class="top-navbar"></div>
 
-<div class="leave-page full-width-page">
+<div class="leave-page full-width-page full-page-height">
 <div class="leave-card full-width-card">
 
 <h1 class="inside-title">My Leaves</h1>
@@ -66,7 +66,7 @@
         </tr>
         </thead>
 
-        <tbody>
+        <tbody id="leaveTableBody">
 
         <?php if(mysqli_num_rows($res) > 0){ ?>
 

@@ -40,40 +40,66 @@ Swal.fire({
 <script src="js/admin-popup.js"></script>
 
 <script>
+
 function filterTable(){
 
-    let user = document.getElementById("searchUser").value.toLowerCase();
-    let type = document.getElementById("searchType").value.toLowerCase();
-    let from = document.getElementById("searchFrom").value.toLowerCase();
-    let to   = document.getElementById("searchTo").value.toLowerCase();
-    let status = document.getElementById("searchStatus").value.toLowerCase();
+let user = document.getElementById("searchUser").value.toLowerCase();
+let type = document.getElementById("searchType").value.toLowerCase();
+let from = document.getElementById("searchFrom").value.toLowerCase();
+let to = document.getElementById("searchTo").value.toLowerCase();
+let status = document.getElementById("searchStatus").value.toLowerCase();
 
-    let rows = document.querySelectorAll(".small-table tbody tr");
+let rows = document.querySelectorAll("#leaveTable tbody tr.leave-row");
 
-    rows.forEach(row => {
+let visibleCount = 0;
 
-        let cols = row.getElementsByTagName("td");
+rows.forEach(function(row){
 
-        if(cols.length < 6) return; // skip empty row
+let cols = row.getElementsByTagName("td");
 
-        let cUser = cols[0].innerText.toLowerCase();
-        let cType = cols[1].innerText.toLowerCase();
-        let cFrom = cols[2].innerText.toLowerCase();
-        let cTo   = cols[3].innerText.toLowerCase();
-        let cStatus = cols[4].innerText.toLowerCase();
+let cUser = cols[0].textContent.toLowerCase();
+let cType = cols[1].textContent.toLowerCase();
+let cFrom = cols[2].textContent.toLowerCase();
+let cTo = cols[3].textContent.toLowerCase();
+let cStatus = cols[4].textContent.toLowerCase();
 
-        let match =
-            cUser.includes(user) &&
-            cType.includes(type) &&
-            cFrom.includes(from) &&
-            cTo.includes(to) &&
-            cStatus.includes(status);
+let match =
+cUser.includes(user) &&
+cType.includes(type) &&
+cFrom.includes(from) &&
+cTo.includes(to) &&
+cStatus.includes(status);
 
-        row.style.display = match ? "" : "none";
+if(match){
 
-    });
+row.classList.remove("filtered-hide");
+visibleCount++;
+
+}else{
+
+row.classList.add("filtered-hide");
 
 }
+
+});
+
+let noSearchData = document.getElementById("noSearchData");
+
+let filtering =
+user || type || from || to || status;
+
+if(filtering && visibleCount === 0){
+
+noSearchData.classList.remove("filtered-hide");
+
+}else{
+
+noSearchData.classList.add("filtered-hide");
+
+}
+
+}
+
 </script>
 
 </body>

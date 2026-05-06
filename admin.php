@@ -53,14 +53,14 @@
 
 </div>
 
-<!-- ===== TOP BAR ===== -->
+<!-- ===== TABLE TOP ===== -->
 <div class="table-top-bar">
 
-    <div class="showing-info">
-        Showing <?php echo $total==0 ? 0 : $start+1; ?>
-        to <?php echo min($start+$limit,$total); ?>
-        of <?php echo $total; ?> entries
-    </div>
+<div class="showing-info">
+Showing <?php echo $total==0 ? 0 : $start+1; ?>
+to <?php echo min($start+$limit,$total); ?>
+of <?php echo $total; ?> entries
+</div>
 
 <div class="pagination-box">
 
@@ -90,7 +90,7 @@ class="<?php if($page==$i) echo 'active-page'; ?>">
 <!-- ===== TABLE ===== -->
 <div class="table-wrapper">
 
-<table class="small-table">
+<table class="small-table" id="leaveTable">
 
 <thead>
 <tr>
@@ -126,12 +126,23 @@ style="cursor:pointer;">
 
 <td>
 <?php if($row['status']=="Pending"){ ?>
-<a href="admin.php?approve=<?php echo $row['id']; ?>" class="approve-btn">Approve</a>
-<a href="admin.php?reject=<?php echo $row['id']; ?>" class="reject-btn">Reject</a>
+
+<a href="admin.php?approve=<?php echo $row['id']; ?>" class="approve-btn">
+Approve
+</a>
+
+<a href="admin.php?reject=<?php echo $row['id']; ?>" class="reject-btn">
+Reject
+</a>
+
 <?php } elseif($row['status']=="Approved"){ ?>
+
 <button class="approved-done">✅</button>
+
 <?php } else { ?>
+
 <button class="rejected-done">❌</button>
+
 <?php } ?>
 </td>
 
@@ -139,12 +150,16 @@ style="cursor:pointer;">
 
 <?php } ?>
 
-<tr id="tableFiller">
-<td colspan="6"></td>
+<!-- FILTER NO DATA -->
+<tr id="noSearchData" class="filtered-hide">
+<td colspan="6" class="no-data-cell">
+No matching records found
+</td>
 </tr>
 
 <?php } else { ?>
 
+<!-- DATABASE NO DATA -->
 <tr>
 <td colspan="6" class="no-data-cell">
 No leave records found
@@ -157,27 +172,63 @@ No leave records found
 
 </table>
 
+<!-- ===== SEARCH FOOTER ===== -->
 <div class="search-footer">
+
 <div class="search-row">
-<input type="text" id="searchUser" placeholder="🔍 User" onkeyup="filterTable()">
-<input type="text" id="searchType" placeholder="🔍 Type" onkeyup="filterTable()">
-<input type="text" id="searchFrom" placeholder="🔍 From" onkeyup="filterTable()">
-<input type="text" id="searchTo" placeholder="🔍 To" onkeyup="filterTable()">
-<input type="text" id="searchStatus" placeholder="🔍 Status" onkeyup="filterTable()">
+
+<div class="search-col">
+<input type="text"
+id="searchUser"
+placeholder="🔍 User"
+onkeyup="filterTable()">
 </div>
+
+<div class="search-col">
+<input type="text"
+id="searchType"
+placeholder="🔍 Type"
+onkeyup="filterTable()">
 </div>
+
+<div class="search-col">
+<input type="text"
+id="searchFrom"
+placeholder="🔍 From"
+onkeyup="filterTable()">
+</div>
+
+<div class="search-col">
+<input type="text"
+id="searchTo"
+placeholder="🔍 To"
+onkeyup="filterTable()">
+</div>
+
+<div class="search-col">
+<input type="text"
+id="searchStatus"
+placeholder="🔍 Status"
+onkeyup="filterTable()">
+</div>
+
+<div class="search-action-space"></div>
 
 </div>
 
 </div>
 
-<!-- 🔥 SCRIPT MUST BE AT BOTTOM -->
+</div>
+
+</div>
+
+<!-- ===== ROW DETAILS POPUP ===== -->
 <script>
+
 document.querySelectorAll(".leave-row").forEach(row => {
 
 row.addEventListener("click", function(e){
 
-// prevent approve/reject click
 if(e.target.closest("a,button")) return;
 
 let user = this.dataset.user;
@@ -189,6 +240,7 @@ let status = this.dataset.status;
 
 let d1 = new Date(from);
 let d2 = new Date(to);
+
 let days = (d2 - d1)/(1000*60*60*24) + 1;
 
 Swal.fire({
@@ -207,6 +259,7 @@ html: `
 });
 
 });
+
 </script>
 
 <?php include 'includes/admin_footer.php'; ?>

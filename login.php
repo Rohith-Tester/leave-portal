@@ -6,8 +6,13 @@
 <div class="login-wrapper">
 
     <div class="left-panel">
+
         <h1>Leave <span>Portal</span></h1>
-        <p>Manage your leaves seamlessly, anytime, anywhere.</p>
+
+        <p>
+        Manage your leaves seamlessly, anytime, anywhere.
+        </p>
+
     </div>
 
     <div class="right-panel">
@@ -17,51 +22,155 @@
             <div class="user-icon">👤</div>
 
             <h2>Welcome Back!</h2>
-            <p class="sub">Sign in to continue</p>
+
+            <p class="sub">
+            Sign in to continue
+            </p>
 
             <?php if($msg!=""){ ?>
-                <p style="color:red; margin-bottom:12px;"><?php echo $msg; ?></p>
+
+                <p style="color:red; margin-bottom:12px;">
+
+                    <?php echo $msg; ?>
+
+                </p>
+
             <?php } ?>
 
-            <form method="POST" id="loginForm" novalidate>
+            <form method="POST"
+            id="loginForm"
+            novalidate
+            autocomplete="off">
 
-                <div class="input-box">
-                    <input type="text" id="username" name="username" placeholder="Username">
-                    <small class="error-msg" id="userError"></small>
+                <!-- 🔥 ROLE TOGGLE -->
+
+                <div class="role-toggle">
+
+                    <button type="button"
+                    id="userBtn"
+                    class="role-btn active-role"
+                    onclick="setRole('user')">
+
+                    User
+
+                    </button>
+
+                    <button type="button"
+                    id="adminBtn"
+                    class="role-btn"
+                    onclick="setRole('admin')">
+
+                    Admin
+
+                    </button>
+
                 </div>
 
+                <!-- 🔥 HIDDEN ROLE -->
+
+                <input type="hidden"
+                name="login_role"
+                id="login_role"
+                value="user">
+
+                <!-- USERNAME -->
+
                 <div class="input-box">
 
-        <div class="password-box">
-                 <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    autocomplete="off">
 
-                 <i class="fa-solid fa-eye eye-toggle"
-                 onclick="togglePassword('password',this)"></i>
-        </div>
+                    <small class="error-msg"
+                    id="userError"></small>
 
-              <small class="error-msg" id="passError"></small>
+                </div>
 
-        </div>
+                <!-- PASSWORD -->
+
+                <div class="input-box">
+
+                    <div class="password-box">
+
+                        <input type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="new-password">
+
+                        <i class="fa-solid fa-eye eye-toggle"
+                        onclick="togglePassword('password',this)">
+                        </i>
+
+                    </div>
+
+                    <small class="error-msg"
+                    id="passError"></small>
+
+                </div>
+
+                <!-- OPTIONS -->
 
                 <div class="option-row">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a href="forget_password.php">Forgot password?</a>
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember me
+
+                    </label>
+
+                    <a href="forget_password.php">
+
+                        Forgot password?
+
+                    </a>
+
                 </div>
 
-                <button type="submit" name="login" class="login-btn">Login</button>
+                <!-- LOGIN BUTTON -->
+
+                <button type="submit"
+                name="login"
+                class="login-btn">
+
+                Login
+
+                </button>
 
             </form>
 
+            <!-- DIVIDER -->
+
             <div class="divider">OR</div>
 
+            <!-- LINKS -->
+
             <div class="bottom-link">
-                <span>Already have an account?</span>
-                <a href="login.php">Login →</a>
+
+                <span>
+                Already have an account?
+                </span>
+
+                <a href="login.php">
+                Login →
+                </a>
+
             </div>
 
             <div class="bottom-link">
-                <span>Don't have an account?</span>
-                <a href="register.php">Register →</a>
+
+                <span>
+                Don't have an account?
+                </span>
+
+                <a href="register.php">
+                Register →
+                </a>
+
             </div>
 
         </div>

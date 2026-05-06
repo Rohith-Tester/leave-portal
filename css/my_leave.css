@@ -189,11 +189,7 @@ align-items:flex-start;
     width:100% !important;
 }
 
-/* 🔥 REMOVE SIDE SPACE FROM TABLE CELLS CONTAINER */
-.leave-card > *{
-    padding-left:10px;
-    padding-right:10px;
-}
+
 
 /* 🔥 BACK BUTTON TOP RIGHT FIX */
 .top-action-row{
@@ -537,4 +533,40 @@ html, body{
     border:1px solid #ccc;
     border-radius:8px;
 }
+
+/* ===== FULL PAGE HEIGHT FIX ===== */
+
+html,
+body{
+height:100% !important;
+margin:0 !important;
+padding:0 !important;
+}
+
+.full-page-height{
+min-height:100vh !important;
+}
+
+/* ===== TABLE FULL PAGE HEIGHT ===== */
+
+.leave-card{
+min-height:calc(100vh - 40px) !important;
+}
+
+.table-wrapper{
+min-height:calc(100vh - 260px) !important;
+}
+
+.leave-page{
+    padding-left:0 !important;
+    padding-right:0 !important;
+}
+
+.leave-card{
+    border-radius:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+
+
 
