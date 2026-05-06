@@ -23,16 +23,15 @@
                 <p class="error-msg"><?php echo $msg; ?></p>
             <?php } ?>
 
-            <!-- 🔥 AUTOFILL OFF -->
             <form method="POST" autocomplete="off">
 
-                <!-- 🔥 FAKE FIELDS (Chrome trick) -->
+                <!-- Fake fields -->
                 <input type="text" name="fakeuser" style="display:none">
                 <input type="password" name="fakepass" style="display:none">
 
                 <!-- Full Name -->
                 <div class="input-box">
-                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" autocomplete="off">
+                    <input type="text" id="fullname" name="fullname" placeholder="Full Name" autocomplete="off" required>
                     <small class="error-msg" id="nameError"></small>
                 </div>
 
@@ -44,14 +43,15 @@
                     name="username"
                     placeholder="Username"
                     autocomplete="off"
-                    oninput="checkUsername()">
+                    oninput="checkUsername()"
+                    required>
 
                     <small class="error-msg" id="userError"></small>
                     <small id="userStatus"></small>
 
                 </div>
 
-                <!-- Email / Mobile -->
+                <!-- Email / Mobile (FIXED) -->
                 <div class="email-row">
 
                     <div class="input-box email-box">
@@ -59,9 +59,10 @@
                         <input type="text"
                         id="contact"
                         name="contact"
-                        placeholder="Enter Email or Mobile Number"
+                        placeholder="Enter Email OR Mobile"
                         autocomplete="off"
-                        oninput="checkContactForOTP()">
+                        oninput="checkContactForOTP()"
+                        required>
 
                         <span id="verifyBtn" class="verify-link">
                             Verify OTP
@@ -86,7 +87,8 @@
                         name="password"
                         placeholder="Password"
                         autocomplete="new-password"
-                        onkeyup="checkPasswordStrength();checkPasswordMatch()">
+                        onkeyup="checkPasswordStrength();checkPasswordMatch()"
+                        required>
 
                         <i class="fa-solid fa-eye eye-toggle"
                         onclick="togglePassword('password',this)"></i>
@@ -108,7 +110,8 @@
                         name="confirm_password"
                         placeholder="Confirm Password"
                         autocomplete="new-password"
-                        onkeyup="checkPasswordMatch()">
+                        onkeyup="checkPasswordMatch()"
+                        required>
 
                         <i class="fa-solid fa-eye eye-toggle"
                         onclick="togglePassword('confirm_password',this)"></i>
@@ -121,7 +124,7 @@
                 </div>
 
                 <!-- Role -->
-                <select name="role" id="role" class="role-select" autocomplete="off">
+                <select name="role" id="role" class="role-select" required>
                     <option value="">Select Role</option>
                     <option value="user">User</option>
                     <option value="admin">Admin</option>

@@ -33,35 +33,14 @@ e.preventDefault();
 
 /* Email Verify OTP */
 
-function checkForgetEmail(){
 
-let email=document.getElementById("verify").value.trim();
-let btn=document.getElementById("verifyMailBtn");
-let error=document.getElementById("verifyError");
-
-let pattern=/^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
-if(email==""){
-error.innerHTML="";
-btn.classList.remove("active");
-return;
-}
-
-if(pattern.test(email)){
-error.innerHTML="";
-btn.classList.add("active");
-}else{
-error.innerHTML="Wrong email";
-btn.classList.remove("active");
-}
-
-}
 
 function sendForgetOTP(){
 
 let btn=document.getElementById("verifyMailBtn");
 
-if(!btn.classList.contains("active")){
+if(btn.style.pointerEvents=="none"){
+alert("Enter registered Email / Mobile");
 return;
 }
 
@@ -71,6 +50,8 @@ document.getElementById("forgetOtpArea").innerHTML=`
 <button type="button" class="mini-btn" onclick="verifyForgetOTP()">Verify</button>
 </div>
 `;
+
+alert("OTP Sent Successfully");
 
 }
 
