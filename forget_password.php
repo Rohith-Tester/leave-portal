@@ -30,28 +30,36 @@
 <small class="error-msg" id="userError"></small>
 </div>
 
-<div class="email-row">
+<div class="input-box">
 
-    <div class="email-main">
+    <div class="email-row">
 
-        <input type="text"
-        id="verify"
-        name="verify"
-        placeholder="Email Address"
-        oninput="checkForgetEmail()">
+        <div class="email-main">
 
-        <span id="verifyMailBtn"
-        class="verify-link"
-        onclick="sendForgetOTP()">
-        Verify OTP
-        </span>
+            <input type="text"
+            id="verify"
+            name="verify"
+            placeholder="Email Address or Mobile"
+            oninput="checkForgetEmail()">
+
+            <span id="verifyMailBtn"
+            class="verify-link"
+            onclick="sendForgetOTP()">
+            Verify OTP
+            </span>
+
+        </div>
+
+        <div id="forgetOtpArea"></div>
 
     </div>
 
-    <div id="forgetOtpArea"></div>
+    <small id="verifyStatus"></small>
+    <small class="error-msg" id="verifyError"></small>
 
 </div>
 
+<!-- ✅ VERIFY STATUS BELOW EMAIL -->
 <small class="error-msg" id="verifyError"></small>
 <small id="verifyStatus"></small>
 
@@ -74,8 +82,6 @@ onclick="togglePassword('newpass',this)"></i>
 <small class="error-msg" id="passError"></small>
 
 </div>
-
-<div class="input-box">
 
 <div class="input-box">
 
@@ -108,5 +114,71 @@ onclick="togglePassword('confirmpass',this)"></i>
 </div>
 </div>
 </div>
+
+<script>
+
+/* ===== VERIFY OTP BUTTON CONTROL ===== */
+
+const verifyInput = document.getElementById("verify");
+const verifyBtn = document.getElementById("verifyMailBtn");
+const verifyStatus = document.getElementById("verifyStatus");
+
+/* DISABLE INITIALLY */
+verifyBtn.style.pointerEvents = "none";
+verifyBtn.style.opacity = "0.5";
+
+function checkForgetEmail(){
+
+    let contact = verifyInput.value.trim();
+
+    if(contact == ""){
+
+        verifyStatus.innerHTML = "";
+
+        verifyBtn.style.pointerEvents = "none";
+        verifyBtn.style.opacity = "0.5";
+
+        return;
+    }
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "check_email.php", true);
+
+    xhr.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+    );
+
+    xhr.onload = function(){
+
+        let response = this.responseText.trim();
+
+        console.log(response);
+
+        if(response == "exists"){
+
+            verifyStatus.innerHTML =
+            "<span class='account-found'>Account Found</span>";
+
+            verifyBtn.style.pointerEvents = "auto";
+            verifyBtn.style.opacity = "2";
+
+        }else{
+
+            verifyStatus.innerHTML =
+            "<span class='password-strength'>Email or Mobile not registered</span>";
+
+            verifyBtn.style.pointerEvents = "none";
+            verifyBtn.style.opacity = "0.5";
+        }
+    };
+
+    xhr.send(
+        "contact=" + encodeURIComponent(contact)
+    );
+}
+
+</script>
 
 <?php include 'includes/forget_footer.php'; ?>

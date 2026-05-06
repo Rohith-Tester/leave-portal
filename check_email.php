@@ -1,32 +1,46 @@
 <?php
+
 include 'db.php';
 
-$contact = $_POST['contact'] ?? "";
-
-$contact = trim($contact);
+if(isset($_POST['contact'])){
+    $contact = trim($_POST['contact']);
+}else{
+    $contact = "";
+}
 
 if($contact == ""){
     echo "invalid";
     exit;
 }
 
-// 🔍 Check if email
+/* CHECK EMAIL */
 if(filter_var($contact, FILTER_VALIDATE_EMAIL)){
 
-    $query = mysqli_query($conn, "SELECT id FROM users WHERE email='$contact'");
+    $query = mysqli_query(
+        $conn,
+        "SELECT id FROM users WHERE email='$contact'"
+    );
 
 }
-// 🔍 Check if mobile
+/* CHECK MOBILE */
 else{
 
-    $query = mysqli_query($conn, "SELECT id FROM users WHERE mobile='$contact'");
+    $query = mysqli_query(
+        $conn,
+        "SELECT id FROM users WHERE mobile='$contact'"
+    );
 
 }
 
-// ✅ RESULT
+/* RESULT */
 if(mysqli_num_rows($query) > 0){
+
     echo "exists";
+
 }else{
-    echo "available";
+
+    echo "not_found";
+
 }
+
 ?>
