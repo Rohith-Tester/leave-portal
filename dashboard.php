@@ -56,6 +56,12 @@ ORDER BY id DESC
 LIMIT $offset,$limit
 ");
 
+$rows = [];
+
+while($temp = mysqli_fetch_assoc($q)){
+    $rows[] = $temp;
+}
+
 /* download csv */
 if(isset($_GET['download']) && $_GET['download']=="csv"){
 
@@ -254,7 +260,7 @@ if($i == $page){
 <th>Status</th>
 </tr>
 
-<?php while($row=mysqli_fetch_assoc($q)){ ?>
+<?php foreach($rows as $row){ ?>
 
 <tr>
 
@@ -286,12 +292,25 @@ if($i == $page){
 <div class="table-foot">
 
 <?php
-$start = ($totalRows==0) ? 0 : $offset + 1;
-$end = $offset + $limit;
-if($end > $totalRows){ $end = $totalRows; }
+
+if(count($rows) > 0){
+
+    $start = $offset + 1;
+
+    $end = $start + count($rows) - 1;
+
+}else{
+
+    $start = 0;
+
+    $end = 0;
+}
+
 ?>
 
-Showing <?php echo $start; ?> to <?php echo $end; ?> of <?php echo $totalRows; ?> entries
+Showing <?php echo $start; ?>
+to <?php echo $end; ?>
+of <?php echo $totalRows; ?> entries
 
 </div>
 

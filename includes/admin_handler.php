@@ -125,4 +125,7 @@ if(mysqli_num_rows($res) == 0 && $page > 1){
     header("Location: admin.php?page=1");
     exit();
 }
+
+$employees = mysqli_query($conn,
+"SELECT * FROM users");
 ?>

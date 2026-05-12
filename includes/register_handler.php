@@ -58,10 +58,37 @@ $msg = "Username already exists";
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 
 $insert = mysqli_query($conn,"
+
 INSERT INTO users
-(fullname,username,password,role,casual_leave,sick_leave,earned_leave,email,mobile)
+(
+fullname,
+username,
+password,
+role,
+casual_leave,
+sick_leave,
+earned_leave,
+email,
+mobile,
+department,
+designation
+)
+
 VALUES
-('$name','$username','$hashed','$role','5','3','7','$email','$mobile')
+(
+'$name',
+'$username',
+'$hashed',
+'$role',
+'5',
+'3',
+'7',
+'$email',
+'$mobile',
+'',
+''
+)
+
 ");
 
 if($insert){
