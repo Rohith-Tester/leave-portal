@@ -16,6 +16,11 @@ class="logout-btn">
 Employee
 </a>
 
+<a href="add_admin.php"
+class="create-admin-btn">
++ Create Admin
+</a>
+
 </div>
 
 <!-- CENTER -->

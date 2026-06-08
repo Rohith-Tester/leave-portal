@@ -127,7 +127,6 @@
                 <select name="role" id="role" class="role-select" required>
                     <option value="">Select Role</option>
                     <option value="user">User</option>
-                    <option value="admin">Admin</option>
                 </select>
 
                 <small id="roleError" class="error-text"></small>

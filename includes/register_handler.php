@@ -29,8 +29,7 @@ $username = trim($_POST['username']);
 $contact  = trim($_POST['contact']); // 🔥 FIXED
 $password = trim($_POST['password']);
 $cpass    = trim($_POST['confirm_password']);
-$role     = trim($_POST['role']);
-
+$role     = "user";
 /* 🔥 SPLIT EMAIL / MOBILE */
 if(filter_var($contact, FILTER_VALIDATE_EMAIL)){
     $email = $contact;
